@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Eliminar Caso</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_eliminar.css') }}">
+</head>
+<body>
+    <h1>Confirmar Eliminar Caso</h1>
+    
+    <p>¿Estás seguro de que deseas eliminar este caso?</p>
+    
+    <form method="post">
+        <input type="submit" value="Eliminar">
+    </form>
+    
+    <a href="{{ url_for('buscar_caso') }}">Cancelar</a>
+</body>
+</html>

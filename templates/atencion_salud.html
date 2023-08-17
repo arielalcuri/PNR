@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Atención Salud - Paramétricas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Agregar aquí la lógica para manejar la interacción del formulario
+            // Por ejemplo, enviar los datos al servidor usando AJAX
+        });
+    </script>
+</head>
+<body>
+    <h1>Atención Salud</h1>
+    <form id="atencionSaludForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+        
+        <!-- Agregar más campos según tus necesidades -->
+        
+        <button type="submit">Agregar</button>
+    </form>
+    
+    <!-- Agregar aquí la lista desplegable animada -->
+    
+</body>
+</html>

@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Personas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_buscar_persona.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .top-header {
+            background-image: url('https://lh3.googleusercontent.com/fife/AKsag4OO4FP55Hq3gwrd1smh9VJ7f8ZGnWFvdYTrK9xko0R6lujamJuFWwihx86c0Hks8Pn6tUdVJ2t9IIxAQxbSPvXOFOqTGFr6QbYliervsPOy3fmZ61ZyUdFCTy4OpjEQblLPS6w09sQbz_Tl7cqIeNUn-XSg_9dn-6_vMWC0dKMQhm9tvSU2d_R9VB5-nCC7nAPMDVxBz0nvgSvVDb__ni2aUdVzmJlhGdXGicqomqoo2zZIxq9AcIMjsk34eL8AM6sFak1mTwrSSsAjjN7JA5jgj-K_naYfU0Irmy2fo7jef1tFa0_B7pGGT5sijcvCH90asPPbVS6izvF5YAAG66_7d0x-i5Dz8BoyJ6DMS7qMn2HSUQ_z7rN21tsh6N3Y2lplpIKdVRV_g1bMd5lc_ORum5-5J6PcdFfR1LJzhBZwQF947g3alPl6JJsKHF9_bBSgkVSyqZSZXsNYCx8Y4jIQ3-cR04nxrJLw4IQonH2cR1m9rHCi_tQ6jq836bOrWeRfIaA9KUB9zkY72mxM2N-bGJcJJVsqsb_8DoHfZLB81o_6gQ_CdHehNydeUZTQNxcdFaIiVFirsDeNi8FkhcqPRUk2IFzAw-F2AdjRonoMqKS5jqy0nr7A8PgSIDziahvKNcFdmec282NYNDVYyA8MlyqWLHJXl2WPus1l-FRP7C_Y3rkfAIGSu_y_zG6ZwOzX5oeVi7ej3pTTzO9V2jNNF62joEv_MeL80gA4Kryy7b_GPIp7EdzqH6t_ZkQV4wOPvXy_sefRw8zQfjQVdoxW0b8nkU_dvKa8hrHYXHQlFBuf-PygUziVOXl_TIjDKvxlWw0y6_6M7PxAQ1RflbroMmUbvHkg5cPLDct_NNnSc3DhLfQajrADlNREWhfb9Ug3jGe9FgWiz7ePSKH_UglDaEo45EFxi8JCksPMDxbrRxBmDEdMsuoOJZTtdiJEqKfKl5TgQpOqUPJIFr4OMazlN7zAqxSC8DWQ8wBX4D2XRq14GenzWzxgqDPw90bkgYjAP06j-9MtmPQTD3jYFHWlNrOJU94_4Y7K4BhKjRjF3SjggxJCqpUCmhyDcPnosh9knUQ7FrCTxffEE-EzAVf-3CLHnr9gJdPyWkLzECSnbUSy9O4g0RaIKa96nip0d8unsQfZmkgDSn0XVLtYp5lvX6za8ZmsyPjAec-0d66_1sHVK2ltzIIj84zqVGH7AZEvzmYO5H38YZkirgQb77GKq0dpg-Uw1INdOekf9jESBprZMWvDIqyPyd-KGRj_2LhaGTEMI5UKsQGtypTz8jYZBy_6DXYivUeC0duPeV09mkeBbENAJ2yTY7qAh50p8QEbvzOd5s4y9-OVqmc0FofWNriMf7V6Ru_ChWQof78rrinxMMXFrwnmEjPddvKCSJBIbFlizJnxlnlC0Ip4PdaLHYJMyUf_QWuo66euQKqwRlxGET1Vxoz85WWE5mgmupINkBCAqxPpjenjywgN4uGe9bdViDJ-Fh7z5b0J0brRoZYTPjH8016mn2UrKkA7tWhSZMDYMhNiitnqZFpLO_wGOeeTKlCvRX3JRN8x4JZWYuHd_D-gDDuiRVQoe-joMzvz9xT5fiPsg4FJ=w1920-h880');
+            background-size: cover;
+            height: 100px; /* Ajusta la altura según tus necesidades */
+            padding: 20px 30px 0px 17px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+  <body>
+    <div class="top-header"></div> <!-- Aquí se muestra la imagen de encabezado -->
+    <header>
+    <h1>Buscar Personas</h1>
+
+    <button id="filterButton" class="filter-button">
+        <i class="fas fa-filter"></i> Filtro
+    </button>
+
+    <form method="post" action="/buscar_persona" id="filterForm" class="filter-form">
+        <label for="filtro_nombre">Nombre:</label>
+        <input type="text" id="filtro_nombre" name="nombre" value="{{ filters.nombre }}">
+        <label for="filtro_apellido">Apellido:</label>
+        <input type="text" id="filtro_apellido" name="apellido" value="{{ filters.apellido }}">
+        <label for="filtro_fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="text" id="filtro_fecha_nacimiento" name="fecha_nacimiento" value="{{ filters.fecha_nacimiento }}">
+        <label for="filtro_genero">Género:</label>
+        <input type="text" id="filtro_genero" name="genero" value="{{ filters.genero }}">
+        <label for="filtro_email">Email:</label>
+        <input type="text" id="filtro_email" name="email" value="{{ filters.email }}">
+        <label for="filtro_alias">Alias:</label>
+        <input type="text" id="filtro_alias" name="alias" value="{{ filters.alias }}">
+        <label for="filtro_tipo_documento">Tipo de Documento:</label>
+        <input type="text" id="filtro_tipo_documento" name="tipo_documento" value="{{ filters.tipo_documento }}">
+        <label for="filtro_numero_documento">Número de Documento:</label>
+        <input type="text" id="filtro_numero_documento" name="numero_documento" value="{{ filters.numero_documento }}">
+        <label for="filtro_telefono_movil">Teléfono Móvil:</label>
+        <input type="text" id="filtro_telefono_movil" name="telefono_movil" value="{{ filters.telefono_movil }}">
+        <label for="filtro_telefono_fijo">Teléfono Fijo:</label>
+        <input type="text" id="filtro_telefono_fijo" name="telefono_fijo" value="{{ filters.telefono_fijo }}">
+        <label for="filtro_pais_origen">País de Origen:</label>
+        <input type="text" id="filtro_pais_origen" name="pais_origen" value="{{ filters.pais_origen }}">
+        <label for="filtro_provincia_origen">Provincia de Origen:</label>
+        <input type="text" id="filtro_provincia_origen" name="provincia_origen" value="{{ filters.provincia_origen }}">
+        <label for="filtro_localidad_origen">Localidad de Origen:</label>
+        <input type="text" id="filtro_localidad_origen" name="localidad_origen" value="{{ filters.localidad_origen }}">
+        <label for="filtro_barrio_origen">Barrio de Origen:</label>
+        <input type="text" id="filtro_barrio_origen" name="barrio_origen" value="{{ filters.barrio_origen }}">
+        <label for="filtro_pais_residencia">País de Residencia:</label>
+        <input type="text" id="filtro_pais_residencia" name="pais_residencia" value="{{ filters.pais_residencia }}">
+        <label for="filtro_provincia_residencia">Provincia de Residencia:</label>
+        <input type="text" id="filtro_provincia_residencia" name="provincia_residencia" value="{{ filters.provincia_residencia }}">
+        <label for="filtro_localidad_residencia">Localidad de Residencia:</label>
+        <input type="text" id="filtro_localidad_residencia" name="localidad_residencia" value="{{ filters.localidad_residencia }}">
+        <label for="filtro_barrio_residencia">Barrio de Residencia:</label>
+        <input type="text" id="filtro_barrio_residencia" name="barrio_residencia" value="{{ filters.barrio_residencia }}">
+        <label for="filtro_pais_domicilio">País de Domicilio:</label>
+        <input type="text" id="filtro_pais_domicilio" name="pais_domicilio" value="{{ filters.pais_domicilio }}">
+        <label for="filtro_provincia_domicilio">Provincia de Domicilio:</label>
+        <input type="text" id="filtro_provincia_domicilio" name="provincia_domicilio" value="{{ filters.provincia_domicilio }}">
+        <label for="filtro_localidad_domicilio">Localidad de Domicilio:</label>
+        <input type="text" id="filtro_localidad_domicilio" name="localidad_domicilio" value="{{ filters.localidad_domicilio }}">
+        <label for="filtro_barrio_domicilio">Barrio de Domicilio:</label>
+        <input type="text" id="filtro_barrio_domicilio" name="barrio_domicilio" value="{{ filters.barrio_domicilio }}">
+        <label for="filtro_calle">Calle:</label>
+        <input type="text" id="filtro_calle" name="calle" value="{{ filters.calle }}">
+        <label for="filtro_altura">Altura:</label>
+        <input type="text" id="filtro_altura" name="altura" value="{{ filters.altura }}">
+        <label for="filtro_piso">Piso:</label>
+        <input type="text" id="filtro_piso" name="piso" value="{{ filters.piso }}">
+        <label for="filtro_departamento">Departamento:</label>
+        <input type="text" id="filtro_departamento" name="departamento" value="{{ filters.departamento }}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if personas %}
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Género</th>
+            <th>Email</th>
+            <th>Alias</th>
+            <th>Tipo de Documento</th>
+            <th>Número de Documento</th>
+            <th>Teléfono Móvil</th>
+            <th>Teléfono Fijo</th>
+            <th>País de Origen</th>
+            <th>Provincia de Origen</th>
+            <th>Localidad de Origen</th>
+            <th>Barrio de Origen</th>
+            <th>País de Residencia</th>
+            <th>Provincia de Residencia</th>
+            <th>Localidad de Residencia</th>
+            <th>Barrio de Residencia</th>
+            <th>País de Domicilio</th>
+            <th>Provincia de Domicilio</th>
+            <th>Localidad de Domicilio</th>
+            <th>Barrio de Domicilio</th>
+            <th>Calle</th>
+            <th>Altura</th>
+            <th>Piso</th>
+            <th>Departamento</th>
+        </tr>
+        {% for persona in personas %}
+        <tr>
+            <td>{{ persona.nombre }}</td>
+            <td>{{ persona.apellido }}</td>
+            <td>{{ persona.fecha_nacimiento }}</td>
+            <td>{{ persona.genero }}</td>
+            <td>{{ persona.email }}</td>
+            <td>{{ persona.alias }}</td>
+            <td>{{ persona.tipo_documento }}</td>
+            <td>{{ persona.numero_documento }}</td>
+            <td>{{ persona.telefono_movil }}</td>
+            <td>{{ persona.telefono_fijo }}</td>
+            <td>{{ persona.pais_origen }}</td>
+            <td>{{ persona.provincia_origen }}</td>
+            <td>{{ persona.localidad_origen }}</td>
+            <td>{{ persona.barrio_origen }}</td>
+            <td>{{ persona.pais_residencia }}</td>
+            <td>{{ persona.provincia_residencia }}</td>
+            <td>{{ persona.localidad_residencia }}</td>
+            <td>{{ persona.barrio_residencia }}</td>
+            <td>{{ persona.pais_domicilio }}</td>
+            <td>{{ persona.provincia_domicilio }}</td>
+            <td>{{ persona.localidad_domicilio }}</td>
+            <td>{{ persona.barrio_domicilio }}</td>
+            <td>{{ persona.calle }}</td>
+            <td>{{ persona.altura }}</td>
+            <td>{{ persona.piso }}</td>
+            <td>{{ persona.departamento }}</td>
+            <td><a href="/borrar_persona/{{ persona.id }}"><img src="{{ url_for('static', filename='icons/eliminar.png') }}" alt="Eliminar" width="20" height="20"></a></td>
+            <td><a href="/editar_persona/{{ persona.id }}"><img src="{{ url_for('static', filename='icons/editar.png') }}" alt="Editar" width="20" height="20"></a></td>
+                
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No se encontraron personas.</p>
+    {% endif %}
+    
+    <script>
+        // JavaScript para mostrar/ocultar los campos de búsqueda al hacer clic en el ícono de filtro
+        const filterButton = document.getElementById('filterButton');
+        const filterForm = document.getElementById('filterForm');
+        filterForm.style.display = 'none'; // Oculta el formulario al cargar la página
+
+        filterButton.addEventListener('click', function() {
+            if (filterForm.style.display === 'none') {
+                filterForm.style.display = 'block';
+            } else {
+                filterForm.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

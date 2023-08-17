@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Persona</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_editar_persona.css') }}">
+    <!-- Agrega tus enlaces a los archivos CSS y JavaScript aquí -->
+</head>
+<body>
+    <h1>Editar Persona</h1>
+
+    <form method="post" action="/editar_persona/{{ persona.id }}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ persona.nombre }}">
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" value="{{ persona.apellido }}">
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="text" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ persona.fecha_nacimiento }}">
+        <label for="genero">Género:</label>
+        <input type="text" id="genero" name="genero" value="{{ persona.genero }}">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="{{ persona.email }}">
+        <label for="alias">Alias:</label>
+        <input type="text" id="alias" name="alias" value="{{ persona.alias }}">
+        <label for="tipo_documento">Tipo de Documento:</label>
+        <input type="text" id="tipo_documento" name="tipo_documento" value="{{ persona.tipo_documento }}">
+        <label for="numero_documento">Número de Documento:</label>
+        <input type="text" id="numero_documento" name="numero_documento" value="{{ persona.numero_documento }}">
+        <label for="telefono_movil">Teléfono Móvil:</label>
+        <input type="text" id="telefono_movil" name="telefono_movil" value="{{ persona.telefono_movil }}">
+        <label for="telefono_fijo">Teléfono Fijo:</label>
+        <input type="text" id="telefono_fijo" name="telefono_fijo" value="{{ persona.telefono_fijo }}">
+        <label for="pais_origen">País de Origen:</label>
+        <input type="text" id="pais_origen" name="pais_origen" value="{{ persona.pais_origen }}">
+        <label for="provincia_origen">Provincia de Origen:</label>
+        <input type="text" id="provincia_origen" name="provincia_origen" value="{{ persona.provincia_origen }}">
+        <label for="localidad_origen">Localidad de Origen:</label>
+        <input type="text" id="localidad_origen" name="localidad_origen" value="{{ persona.localidad_origen }}">
+        <label for="barrio_origen">Barrio de Origen:</label>
+        <input type="text" id="barrio_origen" name="barrio_origen" value="{{ persona.barrio_origen }}">
+        <label for="pais_residencia">País de Residencia:</label>
+        <input type="text" id="pais_residencia" name="pais_residencia" value="{{ persona.pais_residencia }}">
+        <label for="provincia_residencia">Provincia de Residencia:</label>
+        <input type="text" id="provincia_residencia" name="provincia_residencia" value="{{ persona.provincia_residencia }}">
+        <label for="localidad_residencia">Localidad de Residencia:</label>
+        <input type="text" id="localidad_residencia" name="localidad_residencia" value="{{ persona.localidad_residencia }}">
+        <label for="barrio_residencia">Barrio de Residencia:</label>
+        <input type="text" id="barrio_residencia" name="barrio_residencia" value="{{ persona.barrio_residencia }}">
+        <label for="pais_domicilio">País de Domicilio:</label>
+        <input type="text" id="pais_domicilio" name="pais_domicilio" value="{{ persona.pais_domicilio }}">
+        <label for="provincia_domicilio">Provincia de Domicilio:</label>
+        <input type="text" id="provincia_domicilio" name="provincia_domicilio" value="{{ persona.provincia_domicilio }}">
+        <label for="localidad_domicilio">Localidad de Domicilio:</label>
+        <input type="text" id="localidad_domicilio" name="localidad_domicilio" value="{{ persona.localidad_domicilio }}">
+        <label for="barrio_domicilio">Barrio de Domicilio:</label>
+        <input type="text" id="barrio_domicilio" name="barrio_domicilio" value="{{ persona.barrio_domicilio }}">
+        <label for="calle">Calle:</label>
+        <input type="text" id="calle" name="calle" value="{{ persona.calle }}">
+        <label for="altura">Altura:</label>
+        <input type="text" id="altura" name="altura" value="{{ persona.altura }}">
+        <label for="piso">Piso:</label>
+        <input type="text" id="piso" name="piso" value="{{ persona.piso }}">
+        <label for="departamento">Departamento:</label>
+        <input type="text" id="departamento" name="departamento" value="{{ persona.departamento }}">
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>

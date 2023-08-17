@@ -1,0 +1,127 @@
+﻿/* estilos_buscar_caso.css */
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el padding predeterminado del cuerpo */
+    background-color: transparent; /* Fondo transparente */
+}
+
+.top-header {
+    background-image: url('https://www.pxfuel.com/wp-content/uploads/2021/03/desktop-wallpaper-qicaw.jpg');
+    background-size: cover;
+    height: 50px; /* Ajusta la mitad de la altura original */
+    padding: 20px 30px 0px 17px;
+    overflow: hidden;
+}
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: inline-block;
+    width: 100%; /* Cambiado a 100% */
+    font-size: 14px;
+    padding-top: 4px;
+    padding-left: 5px;
+    color: #777777;
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+    overflow: hidden; /* Oculta el contenido que no cabe */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto se corta */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid rgb(110, 10, 10);
+    border-radius: 5px;
+}
+
+input[type="date"] {
+    width: 45%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#error_message {
+    color: red;
+    margin-top: 5px;
+}
+
+#otro_casillero,
+#form_linea_145,
+#dominio_auto_designado {
+    display: none;
+}
+
+div.filter .input>label,
+.input>label {
+    float: left;
+    font: bold 9pt/21px RobotoLight, sans-serif;
+    height: auto !important;
+    min-height: 20px;
+    padding-left: 10px;
+    top: 0;
+    width: 150px;
+    margin-left: -158px;
+}
+
+div.filter form>div,
+div.input {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 1px dotted #EEEEEE;
+    color: #303030;
+    font: 9pt RobotoLight, sans-serif;
+    height: auto !important;
+    min-height: 20px;
+    overflow: auto;
+    padding: 6px 10px 5px 170px;
+    color: #240000;
+}
+
+#content {
+    background: #fff;
+    color: #333;
+}
+
+#container {
+    text-align: left;
+    /* padding-top: 31px; */
+}
+
+body {
+    background: #FFF;
+    color: rgb(27, 25, 25);
+    font-family: arial;
+    font-size: 12px;
+}

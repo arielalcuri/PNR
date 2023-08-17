@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crear Persona</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_crear_persona.css') }}">
+    <!-- Agregar los enlaces de jQuery y jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        .top-header {
+            background-image: url('https://lh3.googleusercontent.com/fife/AKsag4OO4FP55Hq3gwrd1smh9VJ7f8ZGnWFvdYTrK9xko0R6lujamJuFWwihx86c0Hks8Pn6tUdVJ2t9IIxAQxbSPvXOFOqTGFr6QbYliervsPOy3fmZ61ZyUdFCTy4OpjEQblLPS6w09sQbz_Tl7cqIeNUn-XSg_9dn-6_vMWC0dKMQhm9tvSU2d_R9VB5-nCC7nAPMDVxBz0nvgSvVDb__ni2aUdVzmJlhGdXGicqomqoo2zZIxq9AcIMjsk34eL8AM6sFak1mTwrSSsAjjN7JA5jgj-K_naYfU0Irmy2fo7jef1tFa0_B7pGGT5sijcvCH90asPPbVS6izvF5YAAG66_7d0x-i5Dz8BoyJ6DMS7qMn2HSUQ_z7rN21tsh6N3Y2lplpIKdVRV_g1bMd5lc_ORum5-5J6PcdFfR1LJzhBZwQF947g3alPl6JJsKHF9_bBSgkVSyqZSZXsNYCx8Y4jIQ3-cR04nxrJLw4IQonH2cR1m9rHCi_tQ6jq836bOrWeRfIaA9KUB9zkY72mxM2N-bGJcJJVsqsb_8DoHfZLB81o_6gQ_CdHehNydeUZTQNxcdFaIiVFirsDeNi8FkhcqPRUk2IFzAw-F2AdjRonoMqKS5jqy0nr7A8PgSIDziahvKNcFdmec282NYNDVYyA8MlyqWLHJXl2WPus1l-FRP7C_Y3rkfAIGSu_y_zG6ZwOzX5oeVi7ej3pTTzO9V2jNNF62joEv_MeL80gA4Kryy7b_GPIp7EdzqH6t_ZkQV4wOPvXy_sefRw8zQfjQVdoxW0b8nkU_dvKa8hrHYXHQlFBuf-PygUziVOXl_TIjDKvxlWw0y6_6M7PxAQ1RflbroMmUbvHkg5cPLDct_NNnSc3DhLfQajrADlNREWhfb9Ug3jGe9FgWiz7ePSKH_UglDaEo45EFxi8JCksPMDxbrRxBmDEdMsuoOJZTtdiJEqKfKl5TgQpOqUPJIFr4OMazlN7zAqxSC8DWQ8wBX4D2XRq14GenzWzxgqDPw90bkgYjAP06j-9MtmPQTD3jYFHWlNrOJU94_4Y7K4BhKjRjF3SjggxJCqpUCmhyDcPnosh9knUQ7FrCTxffEE-EzAVf-3CLHnr9gJdPyWkLzECSnbUSy9O4g0RaIKa96nip0d8unsQfZmkgDSn0XVLtYp5lvX6za8ZmsyPjAec-0d66_1sHVK2ltzIIj84zqVGH7AZEvzmYO5H38YZkirgQb77GKq0dpg-Uw1INdOekf9jESBprZMWvDIqyPyd-KGRj_2LhaGTEMI5UKsQGtypTz8jYZBy_6DXYivUeC0duPeV09mkeBbENAJ2yTY7qAh50p8QEbvzOd5s4y9-OVqmc0FofWNriMf7V6Ru_ChWQof78rrinxMMXFrwnmEjPddvKCSJBIbFlizJnxlnlC0Ip4PdaLHYJMyUf_QWuo66euQKqwRlxGET1Vxoz85WWE5mgmupINkBCAqxPpjenjywgN4uGe9bdViDJ-Fh7z5b0J0brRoZYTPjH8016mn2UrKkA7tWhSZMDYMhNiitnqZFpLO_wGOeeTKlCvRX3JRN8x4JZWYuHd_D-gDDuiRVQoe-joMzvz9xT5fiPsg4FJ=w1920-h880');
+            background-size: cover;
+            height: 100px; /* Ajusta la altura según tus necesidades */
+            padding: 20px 30px 0px 17px;
+            overflow: hidden;
+        }
+
+                /* Nuevo estilo para alinear los campos de Nombre, Apellido, Fecha de nacimiento y Género */
+                .personal-info-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .personal-info-container label,
+        .personal-info-container input,
+        .personal-info-container select {
+            flex: 4;
+        }
+        
+        .personal-info-container label {
+            flex: 2;
+            text-align: right;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+  <body>
+    <div class="top-header"></div> <!-- Aquí se muestra la imagen de encabezado -->
+    <header>
+    <h1>Crear persona </h1>
+    <form action="/crear_persona" method="post">
+        <!-- TITULO: INFORMACIÓN DE LA PERSONA -->
+        <h2>Información de la Persona</h2>
+        <div class="personal-info-container">
+            <label for="nombre">Nombre/s:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="apellido">Apellido/s:</label>
+            <input type="text" id="apellido" name="apellido" required>
+            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+        </div>
+        <div class="personal-info-container">
+            <label for="genero">Género:</label>
+            <select id="genero" name="genero">
+                <option value="">Seleccione un género</option>
+                <!-- Otras opciones se nutrirán dinámicamente -->
+            </select>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email">
+            <label for="alias">Alias:</label>
+            <input type="text" id="alias" name="alias">
+        </div>
+
+        <!-- TITULO: DOCUMENTO DE IDENTIFICACIÓN -->
+        <h2>Documento de Identificación</h2>
+        
+        <div class="personal-info-container">
+            <label for="tipo_documento">Tipo de documento:</label>
+            <select id="tipo_documento" name="tipo_documento">
+                <option value="">Seleccione tipo de documento</option>
+                <!-- Se nutre de otro lugar -->
+            </select>
+            <label for="numero_documento">Número de documento:</label>
+            <input type="text" id="numero_documento" name="numero_documento">
+        </div>
+
+        <!-- TITULO: TELÉFONOS -->
+        <h2>Teléfonos</h2>
+        <div class="personal-info-container">
+            <label for="telefono_movil">Teléfono móvil:</label>
+            <input type="tel" id="telefono_movil" name="telefono_movil">
+            <label for="telefono_fijo">Teléfono fijo:</label>
+            <input type="tel" id="telefono_fijo" name="telefono_fijo">
+        </div>
+        <!-- TITULO: LUGAR DE ORIGEN -->
+        <h2>Lugar de Origen</h2>
+        <label for="pais_origen">País:</label>
+        <select name="pais_origen" id="pais_origen">
+            <!-- Opción en blanco -->
+        </select>
+        
+        <!-- Campo para seleccionar la provincia (solo si se selecciona Argentina) -->
+        <div id="provincias_origen" style="display: none;">
+            <label for="provincia_origen">Provincia de origen</label>
+            <select name="provincia_origen" id="provincia_origen">
+                <!-- Opciones generadas dinámicamente -->
+            </select>
+        </div>
+
+        <label for="localidad_origen">Localidad:</label>
+        <input type="text" id="localidad_origen" name="localidad_origen">
+
+        <label for="barrio_origen">Barrio:</label>
+        <input type="text" id="barrio_origen" name="barrio_origen">
+
+        <!-- TITULO: LUGAR DE RESIDENCIA -->
+        <h2>Lugar de Residencia</h2>
+        <label for="pais_residencia">País:</label>
+        <select name="pais_residencia" id="pais_residencia">
+            <!-- Opción en blanco -->
+        </select>
+        
+        <!-- Campo para seleccionar la provincia (solo si se selecciona Argentina) -->
+        <div id="provincias_residencia" style="display: none;">
+            <label for="provincia_residencia">Provincia de residencia</label>
+            <select name="provincia_residencia" id="provincia_residencia">
+                <!-- Opciones generadas dinámicamente -->
+            </select>
+        </div>
+
+        <label for="localidad_residencia">Localidad:</label>
+        <input type="text" id="localidad_residencia" name="localidad_residencia">
+
+        <label for="barrio_residencia">Barrio:</label>
+        <input type="text" id="barrio_residencia" name="barrio_residencia">
+
+        <!-- TITULO: DOMICILIO -->
+        <h2>Domicilio</h2>
+        <label for="pais_domicilio">País:</label>
+        <select name="pais_domicilio" id="pais_domicilio">
+            <!-- Opción en blanco -->
+        </select>
+        
+        <!-- Campo para seleccionar la provincia (solo si se selecciona Argentina) -->
+        <div id="provincias_domicilio" style="display: none;">
+            <label for="provincia_domicilio">Provincia de domicilio</label>
+            <select name="provincia_domicilio" id="provincia_domicilio">
+                <!-- Opciones generadas dinámicamente -->
+            </select>
+        </div>
+
+        <label for="localidad_domicilio">Localidad:</label>
+        <input type="text" id="localidad_domicilio" name="localidad_domicilio">
+
+        <label for="barrio_domicilio">Barrio:</label>
+        <input type="text" id="barrio_domicilio" name="barrio_domicilio">
+
+        <label for="calle">Calle:</label>
+        <input type="text" id="calle" name="calle">
+
+        <label for="altura">Altura/número de calle:</label>
+        <input type="text" id="altura" name="altura">
+
+        <label for="piso">Piso:</label>
+        <input type="text" id="piso" name="piso">
+
+        <label for="departamento">Departamento/Casa:</label>
+        <input type="text" id="departamento" name="departamento">
+
+        <input type="submit" value="Crear Persona">
+    </form>
+    <!-- Agregar el script de la API para obtener países -->
+    <script>
+        $(document).ready(function() {
+            // Obtener la lista de países desde la API
+            $.ajax({
+                url: "https://restcountries.com/v3.1/all",
+                method: "GET",
+                success: function(data) {
+                    var paises = data.map(function(country) {
+                        return country.name.common;
+                    }).sort();
+
+                    // Agregar la opción en blanco a todos los selects de país en las secciones
+                    $("select[name^='pais']").each(function() {
+                        var selectPais = $(this);
+                        selectPais.append(new Option("Seleccione un país", ""));
+                        paises.forEach(function(pais) {
+                            var option = new Option(pais, pais);
+                            selectPais.append(option);
+                        });
+                    });
+
+                    // Mostrar/ocultar provincias según país en la sección de origen
+                    $("#pais_origen").change(function() {
+                        if ($(this).val() === "Argentina") {
+                            $("#provincias_origen").show();
+                        } else {
+                            $("#provincias_origen").hide();
+                        }
+                    });
+
+                    // Mostrar/ocultar provincias según país en la sección de residencia
+                    $("#pais_residencia").change(function() {
+                        if ($(this).val() === "Argentina") {
+                            $("#provincias_residencia").show();
+                        } else {
+                            $("#provincias_residencia").hide();
+                        }
+                    });
+
+                    // Mostrar/ocultar provincias según país en la sección de domicilio
+                    $("#pais_domicilio").change(function() {
+                        if ($(this).val() === "Argentina") {
+                            $("#provincias_domicilio").show();
+                        } else {
+                            $("#provincias_domicilio").hide();
+                        }
+                    });
+                }
+            });
+
+            // Obtener la lista de provincias de Argentina
+            var provinciasArg = [
+                "", "Buenos Aires", "Ciudad Autónoma de Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos",
+                "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro",
+                "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego", "Tucumán"
+            ];
+
+            // Llenar el select de provincias de origen en Argentina
+            var selectProvinciaOrigen = $("#provincia_origen");
+            provinciasArg.forEach(function(provincia) {
+                var option = new Option(provincia, provincia);
+                selectProvinciaOrigen.append(option);
+            });
+
+            // Llenar el select de provincias de residencia en Argentina
+            var selectProvinciaResidencia = $("#provincia_residencia");
+            provinciasArg.forEach(function(provincia) {
+                var option = new Option(provincia, provincia);
+                selectProvinciaResidencia.append(option);
+            });
+
+            // Llenar el select de provincias de domicilio en Argentina
+            var selectProvinciaDomicilio = $("#provincia_domicilio");
+            provinciasArg.forEach(function(provincia) {
+                var option = new Option(provincia, provincia);
+                selectProvinciaDomicilio.append(option);
+            });
+        });
+    </script>
+</body>
+</html>

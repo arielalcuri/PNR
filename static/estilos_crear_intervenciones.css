@@ -1,0 +1,80 @@
+﻿/* estilos_crear_intervenciones.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el padding predeterminado del cuerpo */
+    background-color: transparent; /* Fondo transparente */
+}
+
+.top-header {
+    background-image: url('https://www.pxfuel.com/wp-content/uploads/2021/03/desktop-wallpaper-qicaw.jpg');
+    background-size: cover;
+    height: 50px; /* Ajusta la mitad de la altura original */
+    padding: 20px 30px 0px 17px;
+    overflow: hidden;
+}
+
+form {
+    max-width: 600px;
+    margin: 0; /* Cambio para alinear a la izquierda */
+    background-color: rgba(255, 255, 255, 0.836);
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select,
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+}
+
+/* Estilos específicos para el campo "Hora de Encuentro" */
+input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#error_message {
+    color: red;
+    margin-top: 5px;
+}
+
+#otro_casillero,
+#form_linea_145,
+#dominio_auto_designado {
+    display: none;
+}

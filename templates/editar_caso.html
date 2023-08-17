@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_editar_caso.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        .top-header {
+            background-image: url('https://lh3.googleusercontent.com/fife/AKsag4OO4FP55Hq3gwrd1smh9VJ7f8ZGnWFvdYTrK9xko0R6lujamJuFWwihx86c0Hks8Pn6tUdVJ2t9IIxAQxbSPvXOFOqTGFr6QbYliervsPOy3fmZ61ZyUdFCTy4OpjEQblLPS6w09sQbz_Tl7cqIeNUn-XSg_9dn-6_vMWC0dKMQhm9tvSU2d_R9VB5-nCC7nAPMDVxBz0nvgSvVDb__ni2aUdVzmJlhGdXGicqomqoo2zZIxq9AcIMjsk34eL8AM6sFak1mTwrSSsAjjN7JA5jgj-K_naYfU0Irmy2fo7jef1tFa0_B7pGGT5sijcvCH90asPPbVS6izvF5YAAG66_7d0x-i5Dz8BoyJ6DMS7qMn2HSUQ_z7rN21tsh6N3Y2lplpIKdVRV_g1bMd5lc_ORum5-5J6PcdFfR1LJzhBZwQF947g3alPl6JJsKHF9_bBSgkVSyqZSZXsNYCx8Y4jIQ3-cR04nxrJLw4IQonH2cR1m9rHCi_tQ6jq836bOrWeRfIaA9KUB9zkY72mxM2N-bGJcJJVsqsb_8DoHfZLB81o_6gQ_CdHehNydeUZTQNxcdFaIiVFirsDeNi8FkhcqPRUk2IFzAw-F2AdjRonoMqKS5jqy0nr7A8PgSIDziahvKNcFdmec282NYNDVYyA8MlyqWLHJXl2WPus1l-FRP7C_Y3rkfAIGSu_y_zG6ZwOzX5oeVi7ej3pTTzO9V2jNNF62joEv_MeL80gA4Kryy7b_GPIp7EdzqH6t_ZkQV4wOPvXy_sefRw8zQfjQVdoxW0b8nkU_dvKa8hrHYXHQlFBuf-PygUziVOXl_TIjDKvxlWw0y6_6M7PxAQ1RflbroMmUbvHkg5cPLDct_NNnSc3DhLfQajrADlNREWhfb9Ug3jGe9FgWiz7ePSKH_UglDaEo45EFxi8JCksPMDxbrRxBmDEdMsuoOJZTtdiJEqKfKl5TgQpOqUPJIFr4OMazlN7zAqxSC8DWQ8wBX4D2XRq14GenzWzxgqDPw90bkgYjAP06j-9MtmPQTD3jYFHWlNrOJU94_4Y7K4BhKjRjF3SjggxJCqpUCmhyDcPnosh9knUQ7FrCTxffEE-EzAVf-3CLHnr9gJdPyWkLzECSnbUSy9O4g0RaIKa96nip0d8unsQfZmkgDSn0XVLtYp5lvX6za8ZmsyPjAec-0d66_1sHVK2ltzIIj84zqVGH7AZEvzmYO5H38YZkirgQb77GKq0dpg-Uw1INdOekf9jESBprZMWvDIqyPyd-KGRj_2LhaGTEMI5UKsQGtypTz8jYZBy_6DXYivUeC0duPeV09mkeBbENAJ2yTY7qAh50p8QEbvzOd5s4y9-OVqmc0FofWNriMf7V6Ru_ChWQof78rrinxMMXFrwnmEjPddvKCSJBIbFlizJnxlnlC0Ip4PdaLHYJMyUf_QWuo66euQKqwRlxGET1Vxoz85WWE5mgmupINkBCAqxPpjenjywgN4uGe9bdViDJ-Fh7z5b0J0brRoZYTPjH8016mn2UrKkA7tWhSZMDYMhNiitnqZFpLO_wGOeeTKlCvRX3JRN8x4JZWYuHd_D-gDDuiRVQoe-joMzvz9xT5fiPsg4FJ=w1920-h880');
+            background-size: cover;
+            height: 100px; /* Ajusta la mitad de la altura original */
+            padding: 20px 30px 0px 17px;
+            overflow: hidden;
+        }
+    </style>
+    <title>Editar Caso</title>
+</head>
+<body>
+    <div class="top-header"></div> <!-- Aquí se muestra la imagen de encabezado -->
+    <h1>Editar Caso</h1>
+
+    <form method="POST">
+        <label for="carpeta_pn">Carpeta P.N. N°:</label>
+        <input type="text" name="carpeta_pn" value="{{ caso.carpeta_pn }}" required>
+    
+        <label for="ley_marco">Ley Marco:</label>
+        <select name="ley_marco" id="ley_marco" required>
+            <option value="PNR" {% if caso.ley_marco == 'PNR' %} selected {% endif %}>PNR</option>
+            <option value="CENAVID" {% if caso.ley_marco == 'CENAVID' %} selected {% endif %}>CENAVID</option>
+        </select>
+    
+        <label for="num_causa">Número de Causa Judicial:</label>
+        <input type="text" id="num_causa" name="num_causa" value="{{ caso.num_causa }}">
+        <script>
+            $(function() {
+              $("#num_causa").autocomplete({
+                source: function(request, response) {
+                  $.ajax({
+                    url: `/buscar_casos_por_num_causa?num_causa=${request.term}`,
+                    dataType: "json",
+                    success: function(data) {
+                      response(data.map(caso => caso[0]));
+                    }
+                  });
+                },
+                minLength: 1 // La búsqueda comienza después de escribir al menos 1 caracter
+              });
+            });
+        </script>
+        
+        <label for="caratulado">Caratulado:</label>
+        <input type="text" name="caratulado" value="{{ caso.caratulado }}" required>
+    
+        <label for="via_ingreso">Via de Ingreso:</label>
+        <select name="via_ingreso" id="via_ingreso" required>
+            <option value="">Seleccione una opción</option>
+            <option value="MAIL DEL PNR" {% if caso.via_ingreso == 'MAIL DEL PNR' %} selected {% endif %}>MAIL DEL PNR</option>
+            <option value="GDE" {% if caso.via_ingreso == 'GDE' %} selected {% endif %}>GDE</option>
+            <option value="WHATSAPP" {% if caso.via_ingreso == 'WHATSAPP' %} selected {% endif %}>WHATSAPP</option>
+            <option value="CORREO POSTAL" {% if caso.via_ingreso == 'CORREO POSTAL' %} selected {% endif %}>CORREO POSTAL</option>
+        </select>
+    
+        <div id="mail_pnr_casillero" {% if caso.via_ingreso == 'MAIL DEL PNR' %} style="display: block;" {% else %} style="display: none;" {% endif %}>
+            <label for="mail_pnr">Mail del PNR:</label>
+            <input type="text" name="mail_pnr" value="{{ caso.mail_pnr }}">
+        </div>
+    
+        <div id="gde_casillero" {% if caso.via_ingreso == 'GDE' %} style="display: block;" {% else %} style="display: none;" {% endif %}>
+            <label for="num_expediente">N° de expediente GDE:</label>
+            <input type="text" name="num_expediente" value="{{ caso.num_expediente_gde }}">
+        </div>
+    
+        <div id="whatsapp_casillero" {% if caso.via_ingreso == 'WHATSAPP' %} style="display: block;" {% else %} style="display: none;" {% endif %}>
+            <label for="num_whatsapp">N° de WhatsApp:</label>
+            <input type="text" name="num_whatsapp" value="{{ caso.num_whatsapp }}">
+        </div>
+    
+        <div id="correo_postal_casillero" {% if caso.via_ingreso == 'CORREO POSTAL' %} style="display: block;" {% else %} style="display: none;" {% endif %}>
+            <label for="direccion_postal">Dirección Postal:</label>
+            <input type="text" name="direccion_postal" value="{{ caso.direccion_correo_postal }}">
+        </div>
+    
+        <label for="procedencia">Procedencia:</label>
+        <input type="text" name="procedencia" value="{{ caso.procedencia }}" required>
+    
+        <label for="fecha_recepcion">Fecha de Recepción:</label>
+        <input type="date" name="fecha_recepcion" value="{{ caso.fecha_recepcion }}" required>
+    
+        <label for="hora_recepcion">Hora:</label>
+        <input type="time" name="hora_recepcion" value="{{ caso.hora_recepcion }}" required>
+    
+        <label for="oficio_nota">NOTA/OFICIO N°:</label>
+        <input type="text" name="oficio_nota" value="{{ caso.oficio_nota }}">
+    
+        <div id="fecha_oficio_casillero" {% if caso.oficio_nota %} style="display: block;" {% else %} style="display: none;" {% endif %}>
+            <label for="fecha_oficio_nota">Fecha de Oficio/Nota:</label>
+            <input type="date" name="fecha_oficio_nota" value="{{ caso.fecha_oficio_nota }}">
+        </div>
+    
+        <label for="documento">Documento:</label>
+        <select name="documento" required>
+            <option value="OFICIO">OFICIO</option>
+            <option value="MAIL">MAIL</option>
+            <option value="FAX">FAX</option>
+            <option value="CORREO">CORREO</option>
+        </select>
+    
+        <label for="tipologia">Tipología:</label>
+        <select name="tipologia">
+            <!-- Se nutre de otro lugar -->
+        </select>
+    
+        <input type="submit" value="Actualizar Caso">
+    </form>
+    
+    <script>
+        // Mostrar u ocultar campos adicionales según la selección en "Via de Ingreso"
+        $('#via_ingreso').on('change', function() {
+            var selectedOption = $(this).val();
+            $('#mail_pnr_casillero, #gde_casillero, #whatsapp_casillero, #correo_postal_casillero').hide();
+            
+            if (selectedOption === 'MAIL DEL PNR') {
+                $('#mail_pnr_casillero').show();
+            } else if (selectedOption === 'GDE') {
+                $('#gde_casillero').show();
+            } else if (selectedOption === 'WHATSAPP') {
+                $('#whatsapp_casillero').show();
+            } else if (selectedOption === 'CORREO POSTAL') {
+                $('#correo_postal_casillero').show();
+            }
+        });
+    
+        // Mostrar u ocultar el campo "Fecha de Oficio/Nota" según el campo NOTA/OFICIO N°
+        $('input[name="oficio_nota"]').on('input', function() {
+            var $fechaOficioCasillero = $('#fecha_oficio_casillero');
+            if ($(this).val()) {
+                $fechaOficioCasillero.show();
+            } else {
+                $fechaOficioCasillero.hide();
+                $('input[name="fecha_oficio_nota"]').val(''); // Limpiar el valor de la fecha si se oculta
+            }
+        });
+    </script>
+</body>
+</html>

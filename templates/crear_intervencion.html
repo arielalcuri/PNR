@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Intervenciones</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_crear_intervenciones.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.15.7/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder@1.15.7/dist/Control.Geocoder.js"></script>
+    <style>
+        .top-header {
+            background-image: url('https://lh3.googleusercontent.com/fife/AKsag4OO4FP55Hq3gwrd1smh9VJ7f8ZGnWFvdYTrK9xko0R6lujamJuFWwihx86c0Hks8Pn6tUdVJ2t9IIxAQxbSPvXOFOqTGFr6QbYliervsPOy3fmZ61ZyUdFCTy4OpjEQblLPS6w09sQbz_Tl7cqIeNUn-XSg_9dn-6_vMWC0dKMQhm9tvSU2d_R9VB5-nCC7nAPMDVxBz0nvgSvVDb__ni2aUdVzmJlhGdXGicqomqoo2zZIxq9AcIMjsk34eL8AM6sFak1mTwrSSsAjjN7JA5jgj-K_naYfU0Irmy2fo7jef1tFa0_B7pGGT5sijcvCH90asPPbVS6izvF5YAAG66_7d0x-i5Dz8BoyJ6DMS7qMn2HSUQ_z7rN21tsh6N3Y2lplpIKdVRV_g1bMd5lc_ORum5-5J6PcdFfR1LJzhBZwQF947g3alPl6JJsKHF9_bBSgkVSyqZSZXsNYCx8Y4jIQ3-cR04nxrJLw4IQonH2cR1m9rHCi_tQ6jq836bOrWeRfIaA9KUB9zkY72mxM2N-bGJcJJVsqsb_8DoHfZLB81o_6gQ_CdHehNydeUZTQNxcdFaIiVFirsDeNi8FkhcqPRUk2IFzAw-F2AdjRonoMqKS5jqy0nr7A8PgSIDziahvKNcFdmec282NYNDVYyA8MlyqWLHJXl2WPus1l-FRP7C_Y3rkfAIGSu_y_zG6ZwOzX5oeVi7ej3pTTzO9V2jNNF62joEv_MeL80gA4Kryy7b_GPIp7EdzqH6t_ZkQV4wOPvXy_sefRw8zQfjQVdoxW0b8nkU_dvKa8hrHYXHQlFBuf-PygUziVOXl_TIjDKvxlWw0y6_6M7PxAQ1RflbroMmUbvHkg5cPLDct_NNnSc3DhLfQajrADlNREWhfb9Ug3jGe9FgWiz7ePSKH_UglDaEo45EFxi8JCksPMDxbrRxBmDEdMsuoOJZTtdiJEqKfKl5TgQpOqUPJIFr4OMazlN7zAqxSC8DWQ8wBX4D2XRq14GenzWzxgqDPw90bkgYjAP06j-9MtmPQTD3jYFHWlNrOJU94_4Y7K4BhKjRjF3SjggxJCqpUCmhyDcPnosh9knUQ7FrCTxffEE-EzAVf-3CLHnr9gJdPyWkLzECSnbUSy9O4g0RaIKa96nip0d8unsQfZmkgDSn0XVLtYp5lvX6za8ZmsyPjAec-0d66_1sHVK2ltzIIj84zqVGH7AZEvzmYO5H38YZkirgQb77GKq0dpg-Uw1INdOekf9jESBprZMWvDIqyPyd-KGRj_2LhaGTEMI5UKsQGtypTz8jYZBy_6DXYivUeC0duPeV09mkeBbENAJ2yTY7qAh50p8QEbvzOd5s4y9-OVqmc0FofWNriMf7V6Ru_ChWQof78rrinxMMXFrwnmEjPddvKCSJBIbFlizJnxlnlC0Ip4PdaLHYJMyUf_QWuo66euQKqwRlxGET1Vxoz85WWE5mgmupINkBCAqxPpjenjywgN4uGe9bdViDJ-Fh7z5b0J0brRoZYTPjH8016mn2UrKkA7tWhSZMDYMhNiitnqZFpLO_wGOeeTKlCvRX3JRN8x4JZWYuHd_D-gDDuiRVQoe-joMzvz9xT5fiPsg4FJ=w1920-h880');
+            background-size: cover;
+            height: 100px; /* Ajusta la altura según tus necesidades */
+            padding: 20px 30px 0px 17px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+  <body>
+    <div class="top-header"></div> <!-- Aquí se muestra la imagen de encabezado -->
+    <header>
+    <h1>Crear Intervenciones</h1>
+
+    <form action="/crear_intervencion" method="post">
+        <label for="caso">Caso:</label>
+        <input type="text" id="caso" name="caso">
+        <input type="hidden" id="caso_id" name="caso_id">
+        
+<script>
+        $(function() {
+            $("#caso").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: `/buscar_casos_por_num_causa?num_causa=${request.term}`,
+                        dataType: "json",
+                        success: function(data) {
+                            response(data.map(caso => caso[0]));
+                        }
+                    });
+                },
+                minLength: 1 // La búsqueda comienza después de escribir al menos 1 caracter
+            }).on("autocompleteselect", function(event, ui) {
+                $("#caso_id").val(ui.item.id); // Establecer el ID del caso seleccionado
+            });
+        });
+</script>
+<label for="tipo_intervencion">Tipo de intervención:</label>
+<select name="tipo_intervencion" id="tipo_intervencion" required>
+    <!-- Opciones generadas dinámicamente -->
+</select>
+
+<label for="subtipo_intervencion">Subtipo de intervención:</label>
+<select name="subtipo_intervencion" id="subtipo_intervencion" required>
+    <!-- Opciones generadas dinámicamente según el tipo de intervención seleccionado -->
+</select>
+
+<label for="procedimiento"> SOBRE EL TIPO DE INTERVENCIÓN
+<br> <br/>
+
+<label for="lugar_encuentro">Lugar de encuentro:</label>
+<input type="text" name="lugar_encuentro" id="lugar_encuentro" required>
+
+<label for="hora_encuentro">Hora de encuentro:</label>
+<input type="time" name="hora_encuentro" id="hora_encuentro" required>
+
+<label for="observaciones">Observaciones:</label>
+<textarea name="observaciones" id="observaciones"></textarea>
+
+<label for="pais">País donde se realiza la intervención:</label>
+<select name="pais" id="pais" required>
+    <!-- Opción predeterminada de Argentina -->
+    <option value="">Seleccione un país</option>
+    <option value="Argentina">Argentina</option>
+    <!-- Lista de países generada dinámicamente y ordenada alfabéticamente -->
+</select>
+
+<!-- Campo para seleccionar la provincia (solo si se selecciona Argentina) -->
+<div id="provincias" style="display: none;">
+    <label for="provincia">Provincia donde se realiza la intervención:</label>
+    <select name="provincia" id="provincia">
+        <!-- Opciones generadas dinámicamente -->
+    </select>
+</div>
+
+
+<script>
+$(document).ready(function() {
+    // Lista de provincias de Argentina
+    var provincias = [
+        "", "Buenos Aires", "Ciudad Autónoma de Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos",
+        "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro",
+        "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego", "Tucumán"
+    ];
+
+    // Recorremos la lista de provincias y creamos las opciones para el select 'provincia'
+    var selectProvincia = $("#provincia");
+    provincias.forEach(function(provincia) {
+        var option = new Option(provincia, provincia);
+        selectProvincia.append(option);
+    });
+
+    // Obtener la lista de países desde la API
+    $.ajax({
+        url: "https://restcountries.com/v3.1/all",
+        method: "GET",
+        success: function(data) {
+            // Extraer los nombres de los países y ordenar alfabéticamente
+            var paises = data.map(function(country) {
+                return country.name.common;
+            }).sort();
+
+            // Obtener el elemento select
+            var selectPais = document.getElementById("pais");
+
+            // Agregar las opciones al select
+            for (var i = 0; i < paises.length; i++) {
+                var option = document.createElement("option");
+                option.text = paises[i];
+                selectPais.add(option);
+            }
+
+            // Mostrar/ocultar el campo de provincias según la selección de país
+            $("#pais").change(function() {
+                if ($(this).val() === "Argentina") {
+                    $("#provincias").show();
+                } else {
+                    $("#provincias").hide();
+                }
+            });
+        }
+    });
+});
+</script>
+<label for="localidad">Localidad donde se realiza la intervención:</label>
+<select name="localidad" id="localidad" required>
+        <!-- Botón para georeferenciar -->
+        <button type="button" id="georeferenciar">Georeferenciar</button>
+
+</select>
+
+<label for="barrio">Barrio donde se realiza la intervención:</label>
+<input type="text" name="barrio" id="barrio" required>
+
+
+<label for="calle">Calle y altura donde se realiza la intervención:</label>
+<input type="text" name="calle" id="calle" required>
+
+        <!-- Botón para georeferenciar -->
+        <button type="button" id="georeferenciar">Georeferenciar</button>
+
+        <!-- Contenedor del mapa -->
+        <div id="map" style="width: 75%; height: 300px; margin-top: 10px;"></div>
+<form>
+
+<label for="piso">Piso:</label>
+<input type="text" name="piso" id="piso">
+
+<label for="departamento">Departamento/Casa:</label>
+<input type="text" name="departamento" id="departamento">
+
+<label for="coordinador">Coordinador/a que interviene/n:</label>
+<input type="text" name="coordinador" id="coordinador" required>
+
+<label for="profesional">Profesional/es que interviene/n:</label>
+<input type="text" name="profesional" id="profesional" required>
+
+<label for="personal_policial">Personal policial del PNR que interviene/n:</label>
+<input type="text" name="personal_policial" id="personal_policial" required>
+
+<label for="abogado">Abogado/a del PNR interviniente:</label>
+<input type="text" name="abogado" id="abogado" required>
+
+<button type="submit">Crear Intervención</button>
+</form>
+
+<!-- Agregar scripts para cargar opciones de select y funcionalidad adicional -->
+<script>
+    var map = L.map('map').setView([-34.61, -58.38], 13); // Ubicación inicial: Buenos Aires
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var marker;
+
+    // Manejar el evento de clic en el botón "Georeferenciar"
+    $('#georeferenciar').on('click', function() {
+        var address = $('#calle').val();
+        if (marker) {
+            map.removeLayer(marker);
+        }
+
+        // Usar Nominatim para obtener las coordenadas
+        var url = 'https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address);
+        $.getJSON(url, function(data) {
+            if (data.length > 0) {
+                var latlng = [parseFloat(data[0].lat), parseFloat(data[0].lon)];
+                map.setView(latlng, 15);
+                marker = L.marker(latlng).addTo(map);
+            }
+        });
+    });
+</script>
+</body>
+</html>
