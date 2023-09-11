@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roles</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_parametricas.css') }}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    .top-header {
+      background-image: url('https://lh3.googleusercontent.com/fife/AKsag4OO4FP55Hq3gwrd1smh9VJ7f8ZGnWFvdYTrK9xko0R6lujamJuFWwihx86c0Hks8Pn6tUdVJ2t9IIxAQxbSPvXOFOqTGFr6QbYliervsPOy3fmZ61ZyUdFCTy4OpjEQblLPS6w09sQbz_Tl7cqIeNUn-XSg_9dn-6_vMWC0dKMQhm9tvSU2d_R9VB5-nCC7nAPMDVxBz0nvgSvVDb__ni2aUdVzmJlhGdXGicqomqoo2zZIxq9AcIMjsk34eL8AM6sFak1mTwrSSsAjjN7JA5jgj-K_naYfU0Irmy2fo7jef1tFa0_B7pGGT5sijcvCH90asPPbVS6izvF5YAAG66_7d0x-i5Dz8BoyJ6DMS7qMn2HSUQ_z7rN21tsh6N3Y2lplpIKdVRV_g1bMd5lc_ORum5-5J6PcdFfR1LJzhBZwQF947g3alPl6JJsKHF9_bBSgkVSyqZSZXsNYCx8Y4jIQ3-cR04nxrJLw4IQonH2cR1m9rHCi_tQ6jq836bOrWeRfIaA9KUB9zkY72mxM2N-bGJcJJVsqsb_8DoHfZLB81o_6gQ_CdHehNydeUZTQNxcdFaIiVFirsDeNi8FkhcqPRUk2IFzAw-F2AdjRonoMqKS5jqy0nr7A8PgSIDziahvKNcFdmec282NYNDVYyA8MlyqWLHJXl2WPus1l-FRP7C_Y3rkfAIGSu_y_zG6ZwOzX5oeVi7ej3pTTzO9V2jNNF62joEv_MeL80gA4Kryy7b_GPIp7EdzqH6t_ZkQV4wOPvXy_sefRw8zQfjQVdoxW0b8nkU_dvKa8hrHYXHQlFBuf-PygUziVOXl_TIjDKvxlWw0y6_6M7PxAQ1RflbroMmUbvHkg5cPLDct_NNnSc3DhLfQajrADlNREWhfb9Ug3jGe9FgWiz7ePSKH_UglDaEo45EFxi8JCksPMDxbrRxBmDEdMsuoOJZTtdiJEqKfKl5TgQpOqUPJIFr4OMazlN7zAqxSC8DWQ8wBX4D2XRq14GenzWzxgqDPw90bkgYjAP06j-9MtmPQTD3jYFHWlNrOJU94_4Y7K4BhKjRjF3SjggxJCqpUCmhyDcPnosh9knUQ7FrCTxffEE-EzAVf-3CLHnr9gJdPyWkLzECSnbUSy9O4g0RaIKa96nip0d8unsQfZmkgDSn0XVLtYp5lvX6za8ZmsyPjAec-0d66_1sHVK2ltzIIj84zqVGH7AZEvzmYO5H38YZkirgQb77GKq0dpg-Uw1INdOekf9jESBprZMWvDIqyPyd-KGRj_2LhaGTEMI5UKsQGtypTz8jYZBy_6DXYivUeC0duPeV09mkeBbENAJ2yTY7qAh50p8QEbvzOd5s4y9-OVqmc0FofWNriMf7V6Ru_ChWQof78rrinxMMXFrwnmEjPddvKCSJBIbFlizJnxlnlC0Ip4PdaLHYJMyUf_QWuo66euQKqwRlxGET1Vxoz85WWE5mgmupINkBCAqxPpjenjywgN4uGe9bdViDJ-Fh7z5b0J0brRoZYTPjH8016mn2UrKkA7tWhSZMDYMhNiitnqZFpLO_wGOeeTKlCvRX3JRN8x4JZWYuHd_D-gDDuiRVQoe-joMzvz9xT5fiPsg4FJ=w1920-h880');
+      background-size: cover;
+      height: 100px;
+      padding: 20px 30px 0px 17px;
+      overflow: hidden;
+    }
+
+    /* Nuevo estilo para alinear los campos de Nombre, Apellido, Fecha de nacimiento y Género */
+    .personal-info-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .campo {
+      margin: 5px 0;
+      display: none; /* Ocultar el campo inicialmente */
+    }
+
+    table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate; /* Utiliza el modelo de caja de borde separado */
+    border-spacing: 0; /* Establece el espaciado entre las celdas a 0 */
+  }
+
+  th {
+    padding: 5px;
+    text-align: left;
+    background-color: #f5f5f5; /* Cambia el color de fondo del encabezado de la tabla */
+  }
+
+  td {
+    padding: 5px;
+    border: 1px solid #ddd;
+  }
+
+  th:first-child, td:first-child {
+    width: 75%;
+    border-right: none; /* Elimina el borde derecho en la primera columna */
+  }
+
+  th:last-child, td:last-child {
+    width: 25%;
+    text-align: right;
+    border-left: none; /* Elimina el borde izquierdo en la última columna */
+  }
+
+  th {
+    background-color: #f0f0f0; /* Cambia el fondo de los encabezados */
+  }
+
+  .editarBtn, .eliminar {
+     position: relative;
+     z-index: 1;
+  }
+
+  .editarBtn, .eliminar {
+     margin: 5px;
+  }
+  .editarBtn {
+  margin: 5px; /* Agrega un margen alrededor del botón */
+}
+img {
+  pointer-events: none; /* Deshabilita la interacción con el ratón en las imágenes */
+}
+  </style>
+</head>
+<body>
+  <div class="top-header"></div> <!-- Aquí se muestra la imagen de encabezado -->
+  <header>
+    <h2>Roles</h2>
+
+    <!-- Botón para crear un nuevo registro -->
+    <button id="crearBtn">Crear Nuevo</button>
+
+    <!-- Formulario para crear un nuevo registro -->
+    <div class="campo" id="crearForm">
+        <form action="/guardar_rol" method="post">
+            <label for="apellido_nombre">Apellido/s y nombre/s:</label>
+            <input type="text" id="apellido_nombre" name="apellido_nombre" required>
+            <label for="rol">Rol:</label>
+            <select id="rol" name="rol" required>
+              <option value="Coordinador/a">Coordinador/a</option>
+              <option value="Profesional">Profesional</option>
+              <option value="Abogado/a">Abogado/a</option>
+            </select>
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+    <!-- Formulario para editar un registro existente -->
+    <div class="campo" id="editarForm">
+      <form action="/editar_rol" method="post">
+        <input type="hidden" id="editId" name="editId">
+        <label for="nuevo_nombre">Nuevo Nombre:</label>
+        <input type="text" id="nuevo_nombre" name="nuevo_nombre" style="display: none;">
+        <label for="nuevo_rol">Nuevo Rol:</label>
+        <input type="text" id="nuevo_rol" name="nuevo_rol" style="display: none;">
+        <button type="submit" id="guardarCambiosBtn" style="display: none;">Guardar Cambios</button>
+      </form>
+    </div>
+
+    <!-- Tabla para mostrar los registros existentes -->
+    <div class="lista" id="tablaRegistros">
+      <table>
+        <thead>
+          <tr>
+            <th>Apellido/s y nombre/s</th> <!-- Cambio en el encabezado -->
+            <th>Rol</th> <!-- Nuevo encabezado para Rol -->
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros %}
+              <tr>
+                <td>{{ registro[1] }}</td>
+                <td>{{ registro[2] }}</td>
+                <td>
+                  <button class="editarBtn" data-id="{{ registro[0] }}" data-nombre="{{ registro[1] }}"><img src="{{ url_for('static', filename='icons/editar.png') }}" alt="Editar" width="20" height="20"></button>
+                  <button class="eliminar" data-id="{{ registro[0] }}"><img src="{{ url_for('static', filename='icons/eliminar.png') }}" alt="Eliminar" width="20" height="20"></button>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    </div>
+
+    <script>
+        // JavaScript para mostrar u ocultar elementos según los registros en la tabla
+        const crearBtn = document.getElementById('crearBtn');
+        const crearForm = document.getElementById('crearForm');
+        const editarForm = document.getElementById('editarForm');
+        const tablaRegistros = document.getElementById('tablaRegistros');
+        const editIdInput = document.getElementById('editId');
+        const nuevoNombreInput = document.getElementById('nuevo_nombre');
+        const guardarCambiosBtn = document.getElementById('guardarCambiosBtn');
+        const nuevoRolInput = document.getElementById('nuevo_rol'); // Agregado
+  
+        // Función para mostrar el formulario de edición cuando se hace clic en "Editar"
+        function mostrarFormularioEdicion(id, nombre, rol) {
+          editIdInput.value = id;
+          nuevoNombreInput.value = nombre;
+          nuevoRolInput.value = ''; // Limpiar el campo de nuevo rol
+          editarForm.style.display = 'block';
+          guardarCambiosBtn.style.display = 'block';
+          nuevoNombreInput.style.display = 'block';
+          nuevoRolInput.style.display = 'block'; // Mostrar el campo de edición de rol
+          tablaRegistros.style.display = 'none';
+        }
+  
+        // Función para ocultar el formulario de edición
+        function ocultarFormularioEdicion() {
+          editarForm.style.display = 'none';
+          guardarCambiosBtn.style.display = 'none';
+          nuevoNombreInput.style.display = 'none';
+          nuevoRolInput.style.display = 'none'; // Ocultar el campo de edición de rol
+          tablaRegistros.style.display = 'block';
+        }
+  
+        // Llama a ocultarFormularioEdicion al cargar la página
+        ocultarFormularioEdicion();
+  
+        crearBtn.addEventListener('click', () => {
+          crearForm.style.display = 'block';
+          ocultarFormularioEdicion();
+        });
+  
+  // Agregar un event listener para los botones de edición y eliminación
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('editarBtn')) {
+      const id = e.target.getAttribute('data-id');
+      const nombre = e.target.getAttribute('data-nombre'); // Modificado
+      mostrarFormularioEdicion(id, nombre);
+    } else if (e.target.classList.contains('eliminar')) {
+      const id = e.target.getAttribute('data-id');
+      eliminarRegistro(id);
+      e.target.closest('tr').remove();
+      ocultarFormularioEdicion();
+    }
+  });
+  
+        // Función para eliminar un registro por ID
+        function eliminarRegistro(id) {
+          fetch(`/eliminar_rol/${id}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+            .then(response => {
+              if (response.ok) {
+                const fila = document.querySelector(`[data-id="${id}"]`);
+                if (fila) {
+                  fila.remove();
+                  ocultarFormularioEdicion();
+                }
+              } else {
+                console.error('Error al eliminar el registro.');
+              }
+            })
+            .catch(error => {
+              console.error('Error al eliminar el registro:', error);
+            });
+        }
+  
+        // Agregar un event listener para los botones de eliminación
+        tablaRegistros.addEventListener('click', (e) => {
+          if (e.target.classList.contains('eliminar')) {
+            const id = e.target.getAttribute('data-id');
+            eliminarRegistro(id);
+          }
+        });
+      </script>
+  </header>
+</body>
+</html>

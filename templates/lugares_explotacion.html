@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Auto Designado</title>
+  <title>Lugares de explotación</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_parametricas.css') }}">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -65,14 +65,14 @@
 <body>
   <div class="top-header"></div> <!-- Aquí se muestra la imagen de encabezado -->
   <header>
-    <h2>Auto Designado</h2>
+    <h2>Lugares de explotación</h2>
 
     <!-- Botón para crear un nuevo registro -->
     <button id="crearBtn">Crear Nuevo</button>
 
     <!-- Formulario para crear un nuevo registro -->
     <div class="campo" id="crearForm">
-      <form action="/guardar_auto_designado" method="post">
+      <form action="/guardar_lugar_explotacion" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
         <button type="submit">Guardar</button>
@@ -81,7 +81,7 @@
 
     <!-- Formulario para editar un registro existente -->
     <div class="campo" id="editarForm">
-      <form action="/editar_auto_designado" method="post">
+      <form action="/editar_lugar_explotacion" method="post">
         <input type="hidden" id="editId" name="editId">
         <label for="nuevo_nombre">Nuevo Nombre:</label>
         <input type="text" id="nuevo_nombre" name="nuevo_nombre" style="display: none;">
@@ -166,7 +166,7 @@
 
       // Función para eliminar un registro por ID
       function eliminarRegistro(id) {
-        fetch(`/eliminar_auto_designado/${id}`, {
+        fetch(`/eliminar_lugar_explotacion/${id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

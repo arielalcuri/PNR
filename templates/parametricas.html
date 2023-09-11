@@ -1,59 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Parámetricas</title>
+    <!-- Agrega aquí tus etiquetas meta, título y otros encabezados -->
 </head>
 <body>
-  <h1>Parámetricas</h1>
-  <nav>
-    <ul>
-      <li><a href="#atencion-salud">Atención Salud</a></li>
-      <li><a href="#auto-designado">Auto Designado</a></li>
-      <li><a href="#canales-de-ingreso">Canales de Ingreso</a></li>
-      <li><a href="#generos">Géneros</a></li>
-      <li><a href="#lugares-de-explotacion">Lugares de Explotación</a></li>
-      <li><a href="#niveles-de-instruccion">Niveles de Instrucción</a></li>
-      <li><a href="#oficinas-actuantes">Oficinas Actuantes</a></li>
-      <li><a href="#personal-policial-pnr">Personal Policial del PNR</a></li>
-      <li><a href="#puntos-focales">Puntos Focales</a></li>
-      <li><a href="#reservas">Reservas</a></li>
-      <li><a href="#roles-de-personas">Roles de Personas</a></li>
-      <li><a href="#tipo-de-intervencion">Tipo de Intervención</a></li>
-      <li><a href="#subtipo-de-intervencion">Subtipo de Intervención</a></li>
-      <li><a href="#tipos-de-articulaciones">Tipos de Articulaciones</a></li>
-      <li><a href="#tipos-de-documentos">Tipos de Documentos</a></li>
-      <li><a href="#tipos-de-explotaciones">Tipos de Explotaciones</a></li>
-    </ul>
-  </nav>
-  <div id="contenido"></div>
-  
-  <script>
-    const contenidoDiv = document.getElementById('contenido');
-    
-    function cargarContenido(url) {
-      fetch(url)
-        .then(response => response.text())
-        .then(data => {
-          contenidoDiv.innerHTML = data;
-        })
-        .catch(error => {
-          console.error('Error al cargar contenido:', error);
-        });
-    }
+    <div class="menu-vertical">
+        <ul>
+            <li><a href="{{ url_for('atencion_salud') }}">Atención salud</a></li>
+            <li><a href="{{ url_for('auto_designados') }}">Auto designado</a></li>
+            <li><a href="{{ url_for('canales_ingresos') }}">Canales de ingreso</a></li>
+            <!-- Agrega más enlaces a otras rutas aquí -->
+        </ul>
+    </div>
 
-    window.addEventListener('hashchange', () => {
-      const hash = window.location.hash.substring(1);
-      const url = `${hash}.html`;
+    <!-- Aquí puedes agregar el contenido principal de tu página parametricas.html -->
 
-      cargarContenido(url);
-    });
-
-    if (window.location.hash) {
-      const hash = window.location.hash.substring(1);
-      const url = `${hash}.html`;
-
-      cargarContenido(url);
-    }
-  </script>
 </body>
 </html>

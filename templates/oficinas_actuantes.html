@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Auto Designado</title>
+  <title>Oficinas Actuantes</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_parametricas.css') }}">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -16,63 +16,56 @@
       overflow: hidden;
     }
 
-    /* Nuevo estilo para alinear los campos de Nombre, Apellido, Fecha de nacimiento y Género */
-    .personal-info-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-
     .campo {
       margin: 5px 0;
       display: none; /* Ocultar el campo inicialmente */
     }
 
     table {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: separate; /* Utiliza el modelo de caja de borde separado */
-    border-spacing: 0; /* Establece el espaciado entre las celdas a 0 */
-  }
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: separate; /* Utiliza el modelo de caja de borde separado */
+      border-spacing: 0; /* Establece el espaciado entre las celdas a 0 */
+    }
 
-  th {
-    padding: 5px;
-    text-align: left;
-    background-color: #f5f5f5; /* Cambia el color de fondo del encabezado de la tabla */
-  }
+    th {
+      padding: 5px;
+      text-align: left;
+      background-color: #f5f5f5; /* Cambia el color de fondo del encabezado de la tabla */
+    }
 
-  td {
-    padding: 5px;
-    border: 1px solid #ddd;
-  }
+    td {
+      padding: 5px;
+      border: 1px solid #ddd;
+    }
 
-  th:first-child, td:first-child {
-    width: 75%;
-    border-right: none; /* Elimina el borde derecho en la primera columna */
-  }
+    th:first-child, td:first-child {
+      width: 75%;
+      border-right: none; /* Elimina el borde derecho en la primera columna */
+    }
 
-  th:last-child, td:last-child {
-    width: 25%;
-    text-align: right;
-    border-left: none; /* Elimina el borde izquierdo en la última columna */
-  }
+    th:last-child, td:last-child {
+      width: 25%;
+      text-align: right;
+      border-left: none; /* Elimina el borde izquierdo en la última columna */
+    }
 
-  th {
-    background-color: #f0f0f0; /* Cambia el fondo de los encabezados */
-  }
+    th {
+      background-color: #f0f0f0; /* Cambia el fondo de los encabezados */
+    }
   </style>
 </head>
 <body>
   <div class="top-header"></div> <!-- Aquí se muestra la imagen de encabezado -->
   <header>
-    <h2>Auto Designado</h2>
+    <h2>Oficinas Actuantes</h2>
 
     <!-- Botón para crear un nuevo registro -->
     <button id="crearBtn">Crear Nuevo</button>
 
     <!-- Formulario para crear un nuevo registro -->
     <div class="campo" id="crearForm">
-      <form action="/guardar_auto_designado" method="post">
+      <form action="/guardar_oficina_actuante" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
         <button type="submit">Guardar</button>
@@ -81,7 +74,7 @@
 
     <!-- Formulario para editar un registro existente -->
     <div class="campo" id="editarForm">
-      <form action="/editar_auto_designado" method="post">
+      <form action="/editar_oficina_actuante" method="post">
         <input type="hidden" id="editId" name="editId">
         <label for="nuevo_nombre">Nuevo Nombre:</label>
         <input type="text" id="nuevo_nombre" name="nuevo_nombre" style="display: none;">
@@ -166,7 +159,7 @@
 
       // Función para eliminar un registro por ID
       function eliminarRegistro(id) {
-        fetch(`/eliminar_auto_designado/${id}`, {
+        fetch(`/eliminar_oficina_actuante/${id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

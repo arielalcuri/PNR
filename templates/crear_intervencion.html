@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Crear Intervenciones</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_crear_intervenciones.css') }}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.15.7/dist/Control.Geocoder.css" />
-    <script src="https://unpkg.com/leaflet-control-geocoder@1.15.7/dist/Control.Geocoder.js"></script>
-    <style>
-        .top-header {
-            background-image: url('https://lh3.googleusercontent.com/fife/AKsag4OO4FP55Hq3gwrd1smh9VJ7f8ZGnWFvdYTrK9xko0R6lujamJuFWwihx86c0Hks8Pn6tUdVJ2t9IIxAQxbSPvXOFOqTGFr6QbYliervsPOy3fmZ61ZyUdFCTy4OpjEQblLPS6w09sQbz_Tl7cqIeNUn-XSg_9dn-6_vMWC0dKMQhm9tvSU2d_R9VB5-nCC7nAPMDVxBz0nvgSvVDb__ni2aUdVzmJlhGdXGicqomqoo2zZIxq9AcIMjsk34eL8AM6sFak1mTwrSSsAjjN7JA5jgj-K_naYfU0Irmy2fo7jef1tFa0_B7pGGT5sijcvCH90asPPbVS6izvF5YAAG66_7d0x-i5Dz8BoyJ6DMS7qMn2HSUQ_z7rN21tsh6N3Y2lplpIKdVRV_g1bMd5lc_ORum5-5J6PcdFfR1LJzhBZwQF947g3alPl6JJsKHF9_bBSgkVSyqZSZXsNYCx8Y4jIQ3-cR04nxrJLw4IQonH2cR1m9rHCi_tQ6jq836bOrWeRfIaA9KUB9zkY72mxM2N-bGJcJJVsqsb_8DoHfZLB81o_6gQ_CdHehNydeUZTQNxcdFaIiVFirsDeNi8FkhcqPRUk2IFzAw-F2AdjRonoMqKS5jqy0nr7A8PgSIDziahvKNcFdmec282NYNDVYyA8MlyqWLHJXl2WPus1l-FRP7C_Y3rkfAIGSu_y_zG6ZwOzX5oeVi7ej3pTTzO9V2jNNF62joEv_MeL80gA4Kryy7b_GPIp7EdzqH6t_ZkQV4wOPvXy_sefRw8zQfjQVdoxW0b8nkU_dvKa8hrHYXHQlFBuf-PygUziVOXl_TIjDKvxlWw0y6_6M7PxAQ1RflbroMmUbvHkg5cPLDct_NNnSc3DhLfQajrADlNREWhfb9Ug3jGe9FgWiz7ePSKH_UglDaEo45EFxi8JCksPMDxbrRxBmDEdMsuoOJZTtdiJEqKfKl5TgQpOqUPJIFr4OMazlN7zAqxSC8DWQ8wBX4D2XRq14GenzWzxgqDPw90bkgYjAP06j-9MtmPQTD3jYFHWlNrOJU94_4Y7K4BhKjRjF3SjggxJCqpUCmhyDcPnosh9knUQ7FrCTxffEE-EzAVf-3CLHnr9gJdPyWkLzECSnbUSy9O4g0RaIKa96nip0d8unsQfZmkgDSn0XVLtYp5lvX6za8ZmsyPjAec-0d66_1sHVK2ltzIIj84zqVGH7AZEvzmYO5H38YZkirgQb77GKq0dpg-Uw1INdOekf9jESBprZMWvDIqyPyd-KGRj_2LhaGTEMI5UKsQGtypTz8jYZBy_6DXYivUeC0duPeV09mkeBbENAJ2yTY7qAh50p8QEbvzOd5s4y9-OVqmc0FofWNriMf7V6Ru_ChWQof78rrinxMMXFrwnmEjPddvKCSJBIbFlizJnxlnlC0Ip4PdaLHYJMyUf_QWuo66euQKqwRlxGET1Vxoz85WWE5mgmupINkBCAqxPpjenjywgN4uGe9bdViDJ-Fh7z5b0J0brRoZYTPjH8016mn2UrKkA7tWhSZMDYMhNiitnqZFpLO_wGOeeTKlCvRX3JRN8x4JZWYuHd_D-gDDuiRVQoe-joMzvz9xT5fiPsg4FJ=w1920-h880');
-            background-size: cover;
-            height: 100px; /* Ajusta la altura según tus necesidades */
-            padding: 20px 30px 0px 17px;
-            overflow: hidden;
-        }
-    </style>
+    <html>
+    <head>
+        <title>Crear Intervenciones</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_crear_intervenciones.css') }}">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+
+        <style>
+            .top-header {
+                background-image: url('https://lh3.googleusercontent.com/fife/AKsag4OO4FP55Hq3gwrd1smh9VJ7f8ZGnWFvdYTrK9xko0R6lujamJuFWwihx86c0Hks8Pn6tUdVJ2t9IIxAQxbSPvXOFOqTGFr6QbYliervsPOy3fmZ61ZyUdFCTy4OpjEQblLPS6w09sQbz_Tl7cqIeNUn-XSg_9dn-6_vMWC0dKMQhm9tvSU2d_R9VB5-nCC7nAPMDVxBz0nvgSvVDb__ni2aUdVzmJlhGdXGicqomqoo2zZIxq9AcIMjsk34eL8AM6sFak1mTwrSSsAjjN7JA5jgj-K_naYfU0Irmy2fo7jef1tFa0_B7pGGT5sijcvCH90asPPbVS6izvF5YAAG66_7d0x-i5Dz8BoyJ6DMS7qMn2HSUQ_z7rN21tsh6N3Y2lplpIKdVRV_g1bMd5lc_ORum5-5J6PcdFfR1LJzhBZwQF947g3alPl6JJsKHF9_bBSgkVSyqZSZXsNYCx8Y4jIQ3-cR04nxrJLw4IQonH2cR1m9rHCi_tQ6jq836bOrWeRfIaA9KUB9zkY72mxM2N-bGJcJJVsqsb_8DoHfZLB81o_6gQ_CdHehNydeUZTQNxcdFaIiVFirsDeNi8FkhcqPRUk2IFzAw-F2AdjRonoMqKS5jqy0nr7A8PgSIDziahvKNcFdmec282NYNDVYyA8MlyqWLHJXl2WPus1l-FRP7C_Y3rkfAIGSu_y_zG6ZwOzX5oeVi7ej3pTTzO9V2jNNF62joEv_MeL80gA4Kryy7b_GPIp7EdzqH6t_ZkQV4wOPvXy_sefRw8zQfjQVdoxW0b8nkU_dvKa8hrHYXHQlFBuf-PygUziVOXl_TIjDKvxlWw0y6_6M7PxAQ1RflbroMmUbvHkg5cPLDct_NNnSc3DhLfQajrADlNREWhfb9Ug3jGe9FgWiz7ePSKH_UglDaEo45EFxi8JCksPMDxbrRxBmDEdMsuoOJZTtdiJEqKfKl5TgQpOqUPJIFr4OMazlN7zAqxSC8DWQ8wBX4D2XRq14GenzWzxgqDPw90bkgYjAP06j-9MtmPQTD3jYFHWlNrOJU94_4Y7K4BhKjRjF3SjggxJCqpUCmhyDcPnosh9knUQ7FrCTxffEE-EzAVf-3CLHnr9gJdPyWkLzECSnbUSy9O4g0RaIKa96nip0d8unsQfZmkgDSn0XVLtYp5lvX6za8ZmsyPjAec-0d66_1sHVK2ltzIIj84zqVGH7AZEvzmYO5H38YZkirgQb77GKq0dpg-Uw1INdOekf9jESBprZMWvDIqyPyd-KGRj_2LhaGTEMI5UKsQGtypTz8jYZBy_6DXYivUeC0duPeV09mkeBbENAJ2yTY7qAh50p8QEbvzOd5s4y9-OVqmc0FofWNriMf7V6Ru_ChWQof78rrinxMMXFrwnmEjPddvKCSJBIbFlizJnxlnlC0Ip4PdaLHYJMyUf_QWuo66euQKqwRlxGET1Vxoz85WWE5mgmupINkBCAqxPpjenjywgN4uGe9bdViDJ-Fh7z5b0J0brRoZYTPjH8016mn2UrKkA7tWhSZMDYMhNiitnqZFpLO_wGOeeTKlCvRX3JRN8x4JZWYuHd_D-gDDuiRVQoe-joMzvz9xT5fiPsg4FJ=w1920-h880');
+                background-size: cover;
+                height: 100px; /* Ajusta la altura según tus necesidades */
+                padding: 20px 30px 0px 17px;
+                overflow: hidden;
+            }
+            
+
+        </style>
 </head>
   <body>
     <div class="top-header"></div> <!-- Aquí se muestra la imagen de encabezado -->
@@ -27,27 +30,50 @@
 
     <form action="/crear_intervencion" method="post">
         <label for="caso">Caso:</label>
-        <input type="text" id="caso" name="caso">
+        <input type="text" id="caso" name="caso" value="{{ caso_default_value }}">
         <input type="hidden" id="caso_id" name="caso_id">
         
-<script>
-        $(function() {
-            $("#caso").autocomplete({
-                source: function(request, response) {
-                    $.ajax({
-                        url: `/buscar_casos_por_num_causa?num_causa=${request.term}`,
-                        dataType: "json",
-                        success: function(data) {
-                            response(data.map(caso => caso[0]));
-                        }
-                    });
+        <script>
+$(function() {
+    $("#caso").autocomplete({
+        source: function(request, response) {
+            const numCausa = request.term;
+            const fechaRecepcion = "";
+            const caratulado = "";
+
+            $.ajax({
+                url: "/buscar_casos_por_criterios",
+                data: {
+                    num_causa: request.term, // Asegúrate de que estás usando el campo correcto aquí
+                    fecha_recepcion: fechaRecepcion, 
+                    caratulado: caratulado
                 },
-                minLength: 1 // La búsqueda comienza después de escribir al menos 1 caracter
-            }).on("autocompleteselect", function(event, ui) {
-                $("#caso_id").val(ui.item.id); // Establecer el ID del caso seleccionado
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    response(data);
+                }
             });
-        });
-</script>
+        },
+        minLength: 1, 
+        select: function(event, ui) {
+            $("#caso_id").val(ui.item.value);
+            $("#caso").val(ui.item.label);
+            const datosCaso = ui.item.label.split(" - ");
+            $("#num_causa").val(datosCaso[0].split(": ")[1]);
+            $("#fecha_recepcion").val(datosCaso[1].split(": ")[1]);
+            $("#caratulado").val(datosCaso[2].split(": ")[1]);
+
+            return false;
+        }
+    });
+});
+        </script>
+        
+        
+        
+        
+
 <label for="tipo_intervencion">Tipo de intervención:</label>
 <select name="tipo_intervencion" id="tipo_intervencion" required>
     <!-- Opciones generadas dinámicamente -->
@@ -134,7 +160,77 @@ $(document).ready(function() {
         }
     });
 });
+// Hacer una solicitud AJAX para obtener los abogados
+$.ajax({
+    url: "/obtener_roles",
+    method: "GET",
+    success: function(data) {
+        // Llenar el campo de selección múltiple con los abogados
+        var selectAbogado = $("#abogado");
+        data.forEach(function(abogado) {
+            var option = new Option(abogado, abogado);
+            selectAbogado.append(option);
+        });
+
+        // Inicializar el plugin de selección múltiple
+        selectAbogado.multiselect({
+            includeSelectAllOption: false,
+            selectAllValue: 'select-all',
+        });
+
+        // Desmarcar la opción "None selected"
+        selectAbogado.multiselect('deselectAll', false);
+    }
+});
+
+$.ajax({
+    url: "/api/profesionales", // Cambia la URL según corresponda
+    method: "GET",
+    success: function(data) {
+        var selectProfesional = $("#profesional");
+
+        data.forEach(function(profesional) {
+            var option = new Option(profesional, profesional);
+            selectProfesional.append(option);
+        });
+
+        selectProfesional.multiselect({
+            includeSelectAllOption: false,
+            selectAllValue: 'select-all',
+        });
+
+        selectProfesional.multiselect('deselectAll', false);
+    }
+});
+$(document).ready(function() {
+                // Hacer una solicitud AJAX para obtener el personal policial
+                $.ajax({
+                    url: "/obtener_personal_policial",  // Actualiza la URL si es necesario
+                    method: "GET",
+                    success: function(data) {
+                        // Llenar el campo de selección múltiple con el personal policial
+                        var selectPersonalPolicial = $("#personal_policial");
+                        data.forEach(function(pp) {
+                            var option = new Option(pp[1], pp[0]);
+                            selectPersonalPolicial.append(option);
+                        });
+
+                        // Inicializar el plugin de selección múltiple
+                        selectPersonalPolicial.multiselect({
+                            includeSelectAllOption: false, // Para no mostrar "Select all"
+                            nonSelectedText: "Seleccione personal policial",
+                            nSelectedText: "seleccionado(s)",
+                            allSelectedText: "Todos seleccionados",
+                            numberDisplayed: 1
+                        });
+
+                        // Ocultar la opción "Seleccione personal policial"
+                        $('#personal_policial option[value=""]').hide();
+                    }
+                });
+            });
 </script>
+
 <label for="localidad">Localidad donde se realiza la intervención:</label>
 <select name="localidad" id="localidad" required>
         <!-- Botón para georeferenciar -->
@@ -166,17 +262,30 @@ $(document).ready(function() {
 <input type="text" name="coordinador" id="coordinador" required>
 
 <label for="profesional">Profesional/es que interviene/n:</label>
-<input type="text" name="profesional" id="profesional" required>
+<div class="select-container">
 
+    <select name="profesional" id="profesional" class="multi-select" multiple required>
+        <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
+    </select>
+</div>
 <label for="personal_policial">Personal policial del PNR que interviene/n:</label>
-<input type="text" name="personal_policial" id="personal_policial" required>
+<div class="select-container">
+
+    <select name="personal_policial" id="personal_policial" class="policia-select multi-column" multiple required>
+        <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
+    </select>
+</div>
 
 <label for="abogado">Abogado/a del PNR interviniente:</label>
-<input type="text" name="abogado" id="abogado" required>
+<div class="select-container">
 
+    <select name="abogado" id="abogado" class="abogado-select multi-column" multiple required>
+        <!-- Las opciones se llenarán dinámicamente mediante JavaScript -->
+    </select>
+</div>
+</form>
 <button type="submit">Crear Intervención</button>
 </form>
-
 <!-- Agregar scripts para cargar opciones de select y funcionalidad adicional -->
 <script>
     var map = L.map('map').setView([-34.61, -58.38], 13); // Ubicación inicial: Buenos Aires
@@ -205,6 +314,47 @@ $(document).ready(function() {
             }
         });
     });
+</script>
+
+<script>
+    $(document).ready(function() {
+    // Ocultar el botón "None selected"
+    $('button.multiselect.dropdown-toggle.btn.btn-default span.multiselect-selected-text').hide();
+}); 
+</script>
+<script>
+    $(document).ready(function() {
+        var selectPersonalPolicial = $("#personal_policial");
+        var options = selectPersonalPolicial.children("option");
+
+        var middleIndex = Math.ceil(options.length / 2);
+        var firstColumnOptions = options.slice(0, middleIndex);
+        var secondColumnOptions = options.slice(middleIndex);
+
+        var firstColumn = $("<div class='policia-column'>").append(firstColumnOptions);
+        var secondColumn = $("<div class='policia-column'>").append(secondColumnOptions);
+
+        var columnContainer = $("<div class='policia-column-container'>").append(firstColumn).append(secondColumn);
+
+        selectPersonalPolicial.after(columnContainer);
+        selectPersonalPolicial.hide();
+    });
+
+    $(document).ready(function() {
+    var selectAbogado = $("#abogado");
+
+    selectAbogado.multiselect({
+        includeSelectAllOption: false,
+        selectAllValue: 'select-all',
+    });
+
+    // Desmarcar la opción "None selected"
+    selectAbogado.multiselect('deselectAll', false);
+
+    // Ocultar la opción "None selected" del plugin Bootstrap Multiselect
+    $('.multiselect.dropdown-toggle.btn.btn-default:after').css('display', 'none');
+});
+    
 </script>
 </body>
 </html>

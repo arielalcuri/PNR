@@ -55,7 +55,9 @@
             <label for="genero">Género:</label>
             <select id="genero" name="genero">
                 <option value="">Seleccione un género</option>
-                <!-- Otras opciones se nutrirán dinámicamente -->
+                {% for genero in registros_generos %}
+                    <option value="{{ genero }}">{{ genero }}</option>
+                {% endfor %}
             </select>
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email">
@@ -67,10 +69,11 @@
         <h2>Documento de Identificación</h2>
         
         <div class="personal-info-container">
-            <label for="tipo_documento">Tipo de documento:</label>
-            <select id="tipo_documento" name="tipo_documento">
-                <option value="">Seleccione tipo de documento</option>
-                <!-- Se nutre de otro lugar -->
+            <label for="tipo_documento">Tipo de Documento:</label>
+            <select name="tipo_documento">
+                {% for tipo_documento in registros_tipos_documentos %}
+                    <option value="{{ tipo_documento }}">{{ tipo_documento }}</option>
+                {% endfor %}
             </select>
             <label for="numero_documento">Número de documento:</label>
             <input type="text" id="numero_documento" name="numero_documento">

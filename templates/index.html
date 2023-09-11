@@ -4,31 +4,281 @@
     <title>Página principal</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos_index.css') }}">
     <style>
-        .top-header {
-            background-image: url('https://lh3.googleusercontent.com/fife/AKsag4OO4FP55Hq3gwrd1smh9VJ7f8ZGnWFvdYTrK9xko0R6lujamJuFWwihx86c0Hks8Pn6tUdVJ2t9IIxAQxbSPvXOFOqTGFr6QbYliervsPOy3fmZ61ZyUdFCTy4OpjEQblLPS6w09sQbz_Tl7cqIeNUn-XSg_9dn-6_vMWC0dKMQhm9tvSU2d_R9VB5-nCC7nAPMDVxBz0nvgSvVDb__ni2aUdVzmJlhGdXGicqomqoo2zZIxq9AcIMjsk34eL8AM6sFak1mTwrSSsAjjN7JA5jgj-K_naYfU0Irmy2fo7jef1tFa0_B7pGGT5sijcvCH90asPPbVS6izvF5YAAG66_7d0x-i5Dz8BoyJ6DMS7qMn2HSUQ_z7rN21tsh6N3Y2lplpIKdVRV_g1bMd5lc_ORum5-5J6PcdFfR1LJzhBZwQF947g3alPl6JJsKHF9_bBSgkVSyqZSZXsNYCx8Y4jIQ3-cR04nxrJLw4IQonH2cR1m9rHCi_tQ6jq836bOrWeRfIaA9KUB9zkY72mxM2N-bGJcJJVsqsb_8DoHfZLB81o_6gQ_CdHehNydeUZTQNxcdFaIiVFirsDeNi8FkhcqPRUk2IFzAw-F2AdjRonoMqKS5jqy0nr7A8PgSIDziahvKNcFdmec282NYNDVYyA8MlyqWLHJXl2WPus1l-FRP7C_Y3rkfAIGSu_y_zG6ZwOzX5oeVi7ej3pTTzO9V2jNNF62joEv_MeL80gA4Kryy7b_GPIp7EdzqH6t_ZkQV4wOPvXy_sefRw8zQfjQVdoxW0b8nkU_dvKa8hrHYXHQlFBuf-PygUziVOXl_TIjDKvxlWw0y6_6M7PxAQ1RflbroMmUbvHkg5cPLDct_NNnSc3DhLfQajrADlNREWhfb9Ug3jGe9FgWiz7ePSKH_UglDaEo45EFxi8JCksPMDxbrRxBmDEdMsuoOJZTtdiJEqKfKl5TgQpOqUPJIFr4OMazlN7zAqxSC8DWQ8wBX4D2XRq14GenzWzxgqDPw90bkgYjAP06j-9MtmPQTD3jYFHWlNrOJU94_4Y7K4BhKjRjF3SjggxJCqpUCmhyDcPnosh9knUQ7FrCTxffEE-EzAVf-3CLHnr9gJdPyWkLzECSnbUSy9O4g0RaIKa96nip0d8unsQfZmkgDSn0XVLtYp5lvX6za8ZmsyPjAec-0d66_1sHVK2ltzIIj84zqVGH7AZEvzmYO5H38YZkirgQb77GKq0dpg-Uw1INdOekf9jESBprZMWvDIqyPyd-KGRj_2LhaGTEMI5UKsQGtypTz8jYZBy_6DXYivUeC0duPeV09mkeBbENAJ2yTY7qAh50p8QEbvzOd5s4y9-OVqmc0FofWNriMf7V6Ru_ChWQof78rrinxMMXFrwnmEjPddvKCSJBIbFlizJnxlnlC0Ip4PdaLHYJMyUf_QWuo66euQKqwRlxGET1Vxoz85WWE5mgmupINkBCAqxPpjenjywgN4uGe9bdViDJ-Fh7z5b0J0brRoZYTPjH8016mn2UrKkA7tWhSZMDYMhNiitnqZFpLO_wGOeeTKlCvRX3JRN8x4JZWYuHd_D-gDDuiRVQoe-joMzvz9xT5fiPsg4FJ=w1920-h880');
-            background-size: cover;
-            height: 100px; /* Ajusta la mitad de la altura original */
-            padding: 20px 30px 0px 17px;
-            overflow: hidden;
-        }
+.top-header {
+    background-image: url('https://lh3.googleusercontent.com/fife/AKsag4OO4FP55Hq3gwrd1smh9VJ7f8ZGnWFvdYTrK9xko0R6lujamJuFWwihx86c0Hks8Pn6tUdVJ2t9IIxAQxbSPvXOFOqTGFr6QbYliervsPOy3fmZ61ZyUdFCTy4OpjEQblLPS6w09sQbz_Tl7cqIeNUn-XSg_9dn-6_vMWC0dKMQhm9tvSU2d_R9VB5-nCC7nAPMDVxBz0nvgSvVDb__ni2aUdVzmJlhGdXGicqomqoo2zZIxq9AcIMjsk34eL8AM6sFak1mTwrSSsAjjN7JA5jgj-K_naYfU0Irmy2fo7jef1tFa0_B7pGGT5sijcvCH90asPPbVS6izvF5YAAG66_7d0x-i5Dz8BoyJ6DMS7qMn2HSUQ_z7rN21tsh6N3Y2lplpIKdVRV_g1bMd5lc_ORum5-5J6PcdFfR1LJzhBZwQF947g3alPl6JJsKHF9_bBSgkVSyqZSZXsNYCx8Y4jIQ3-cR04nxrJLw4IQonH2cR1m9rHCi_tQ6jq836bOrWeRfIaA9KUB9zkY72mxM2N-bGJcJJVsqsb_8DoHfZLB81o_6gQ_CdHehNydeUZTQNxcdFaIiVFirsDeNi8FkhcqPRUk2IFzAw-F2AdjRonoMqKS5jqy0nr7A8PgSIDziahvKNcFdmec282NYNDVYyA8MlyqWLHJXl2WPus1l-FRP7C_Y3rkfAIGSu_y_zG6ZwOzX5oeVi7ej3pTTzO9V2jNNF62joEv_MeL80gA4Kryy7b_GPIp7EdzqH6t_ZkQV4wOPvXy_sefRw8zQfjQVdoxW0b8nkU_dvKa8hrHYXHQlFBuf-PygUziVOXl_TIjDKvxlWw0y6_6M7PxAQ1RflbroMmUbvHkg5cPLDct_NNnSc3DhLfQajrADlNREWhfb9Ug3jGe9FgWiz7ePSKH_UglDaEo45EFxi8JCksPMDxbrRxBmDEdMsuoOJZTtdiJEqKfKl5TgQpOqUPJIFr4OMazlN7zAqxSC8DWQ8wBX4D2XRq14GenzWzxgqDPw90bkgYjAP06j-9MtmPQTD3jYFHWlNrOJU94_4Y7K4BhKjRjF3SjggxJCqpUCmhyDcPnosh9knUQ7FrCTxffEE-EzAVf-3CLHnr9gJdPyWkLzECSnbUSy9O4g0RaIKa96nip0d8unsQfZmkgDSn0XVLtYp5lvX6za8ZmsyPjAec-0d66_1sHVK2ltzIIj84zqVGH7AZEvzmYO5H38YZkirgQb77GKq0dpg-Uw1INdOekf9jESBprZMWvDIqyPyd-KGRj_2LhaGTEMI5UKsQGtypTz8jYZBy_6DXYivUeC0duPeV09mkeBbENAJ2yTY7qAh50p8QEbvzOd5s4y9-OVqmc0FofWNriMf7V6Ru_ChWQof78rrinxMMXFrwnmEjPddvKCSJBIbFlizJnxlnlC0Ip4PdaLHYJMyUf_QWuo66euQKqwRlxGET1Vxoz85WWE5mgmupINkBCAqxPpjenjywgN4uGe9bdViDJ-Fh7z5b0J0brRoZYTPjH8016mn2UrKkA7tWhSZMDYMhNiitnqZFpLO_wGOeeTKlCvRX3JRN8x4JZWYuHd_D-gDDuiRVQoe-joMzvz9xT5fiPsg4FJ=w1920-h880');
+    background-size: cover;
+    height: 150px;
+    padding: 20px 30px 0px 17px;
+    overflow: hidden;
+    text-align: right; /* Alinea el texto a la derecha */
+}
+
+.menu-horizontal {
+    background-color: #333;
+    color: #fff;
+    list-style: none;
+    padding: 0;
+    text-align: end; /* Alinea el texto a la derecha */
+    position: absolute;
+    top: 170px;
+    right: 0; /* Alinea el menú a la derecha */
+}
+
+.menu-horizontal li {
+    display: inline-block;
+    margin-left: 10px;
+    position: relative;
+}
+
+.menu-horizontal a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu-vertical {
+    display: none;
+    background-color: #333;
+    color: #fff;
+    position: absolute;
+    top: 100%; /* Posiciona el menú vertical debajo del enlace "Parametricas" */
+    right: 0; /* Alinea el menú a la derecha */
+    width: 150px;
+    list-style: none;
+    margin-top: 1px;
+}
+
+.menu-vertical li {
+    padding: 1px 0;
+}
+
+.menu-vertical a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 5px 20px;
+}
+
+.menu-vertical a:hover {
+    background-color: #555;
+}
+
+.menu-horizontal li:hover .menu-vertical {
+    display: block;
+}
+
+
     </style>
 </head>
+
 <body>
-    <div class="top-header"></div> <!-- Aquí se muestra la imagen de encabezado -->
+    <div class="top-header"></div>
+    <nav class="menu-horizontal">
+        <ul>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#">Inicio</a>
+                <ul class="menu-vertical">
+                    <li><a href="{{ url_for('index') }}">Inicio</a></li><!-- Contenido del nuevo menú 1 -->
+                </ul>
+            </li>
+            <li>
+                <a href="#">Casos</a>
+                <ul class="menu-vertical">
+                    <li><a href="{{ url_for('crear_caso') }}">Crear Caso</a></li><!-- Contenido del nuevo menú 1 -->
+                    <li><a href="{{ url_for('buscar_caso') }}">Buscar Caso</a></li><!-- Contenido del nuevo menú 1 -->
+                </ul>
+            </li>
+            <li>
+                <a href="#">Intervenciones</a>
+                <ul class="menu-vertical">
+                    <li><a href="{{ url_for('crear_intervencion') }}">Crear Intervención</a></li><!-- Contenido del nuevo menú 1 -->
+                </ul>
+            </li>
+            <li>
+                <a href="#">Personas</a>
+                <ul class="menu-vertical">
+                    <li><a href="{{ url_for('crear_persona') }}">Crear Personas</a></li><!-- Contenido del nuevo menú 1 -->
+                    <li><a href="{{ url_for('buscar_persona') }}">Buscar Personas</a></li><!-- Contenido del nuevo menú 1 -->
+                </ul>
+            </li>
+            <li>
+                <a href="#">Parametricas</a>
+                <ul class="menu-vertical">
+                    <li><a href="{{ url_for('atencion_de_salud') }}">Atención salud</a></li>
+                    <li><a href="{{ url_for('auto_designado') }}">Auto designado</a></li>
+                    <li><a href="{{ url_for('canales_de_ingreso') }}">Canales de ingreso</a></li>
+                    <li><a href="{{ url_for('fuerzas_seguridad') }}">Fuerzas de seguridad</a></li>
+                    <li><a href="{{ url_for('generos') }}">Géneros</a></li>
+                    <li><a href="{{ url_for('lugares_explotacion') }}">Lugares de explotación</a></li>
+                    <li><a href="{{ url_for('niveles_instruccion') }}">Niveles de instrucción</a></li>
+                    <li><a href="{{ url_for('oficinas_actuantes') }}">Oficinas actuantes</a></li>
+                    <li><a href="{{ url_for('personal_policial_pnr') }}">Personal Policial del PNR</a></li>
+                    <li><a href="{{ url_for('puntos_focales') }}">Puntos Focales</a></li>
+                    <li><a href="{{ url_for('reservas') }}">Reservas</a></li>
+                    <li><a href="{{ url_for('roles_personas') }}">Roles de Personas</a></li>
+                    <li><a href="{{ url_for('tipos_intervenciones') }}">Tipos de intervenciones</a></li>
+                    <li><a href="{{ url_for('tipos_documentos') }}">Tipos de documentos</a></li>
+                    <li><a href="{{ url_for('tipologias') }}">Tiplogías</a></li>
+                    <li><a href="{{ url_for('roles') }}">Roles</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#"></a>
+                <ul class="menu-vertical">
+                    
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
     <header>
-        <h1>Página principal</h1>
+        <h1></h1>
     </header>
 
     <nav>
         <ul>
-            <li><a href="/"><img src="{{ url_for('static', filename='icons/inicio.png') }}" alt="Inicio" width="150" height="150"> Inicio</a></li>
-            <li><a href="/crear_caso"><img src="{{ url_for('static', filename='icons/crear_caso.png') }}" alt="Crear Caso" width="150" height="150"> Crear Caso</a></li>
-            <li><a href="/buscar_caso"><img src="{{ url_for('static', filename='icons/buscar_caso.png') }}" alt="Buscar Caso" width="150" height="150"> Buscar Caso</a></li>
-            <li><a href="/crear_intervencion"><img src="{{ url_for('static', filename='icons/crear_intervencion.png') }}" alt="Buscar Persona" width="150" height="150"> Buscar Persona</a></li>
-            <li><a href="/buscar_intervencion"><img src="{{ url_for('static', filename='icons/buscar_intervencion.png') }}" alt="Buscar Persona" width="150" height="150"> Buscar Persona</a></li>
-            <li><a href="/crear_persona"><img src="{{ url_for('static', filename='icons/crear_persona.png') }}" alt="Crear Persona" width="150" height="150"> Crear Persona</a></li>
-            <li><a href="/buscar_persona"><img src="{{ url_for('static', filename='icons/buscar_persona.png') }}" alt="Buscar Persona" width="150" height="150"> Buscar Persona</a></li>
+            <li><a href="/"><img src="{{ url_for('static', filename='icons/inicio.png') }}" alt="Inicio" width="150"
+                        height="150"> Inicio</a></li>
+            <li><a href="/crear_caso"><img src="{{ url_for('static', filename='icons/crear_caso.png') }}"
+                        alt="Crear Caso" width="150" height="150"> Crear Caso</a></li>
+            <li><a href="/buscar_caso"><img src="{{ url_for('static', filename='icons/buscar_caso.png') }}"
+                        alt="Buscar Caso" width="150" height="150"> Buscar Caso</a></li>
+            <li><a href="/crear_intervencion"><img src="{{ url_for('static', filename='icons/crear_intervencion.png') }}"
+                        alt="Buscar Persona" width="150" height="150"> Crear Intervención</a></li>
+            <li><a href="/buscar_intervencion"><img
+                        src="{{ url_for('static', filename='icons/buscar_intervencion.png') }}"
+                        alt="Buscar Persona" width="150" height="150"> Buscar Intervención</a></li>
+            <li><a href="/crear_persona"><img src="{{ url_for('static', filename='icons/crear_persona.png') }}"
+                        alt="Crear Persona" width="150" height="150"> Crear Persona</a></li>
+            <li><a href="/buscar_persona"><img src="{{ url_for('static', filename='icons/buscar_persona.png') }}"
+                        alt="Buscar Persona" width="150" height="150"> Buscar Persona</a></li>
         </ul>
     </nav>
 </body>
+
 </html>

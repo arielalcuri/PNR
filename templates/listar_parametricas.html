@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Submenús</title>
+</head>
+<body>
+    <h1>Listado de Submenús</h1>
+
+    <ul>
+        {% for submenu in submenus %}
+            <li>{{ submenu }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/agregar">Agregar Nuevo Submenú</a>
+</body>
+</html>

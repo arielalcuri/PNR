@@ -114,7 +114,9 @@
 
         <label for="tipologia">Tipología:</label>
         <select name="tipologia">
-            <!-- Se nutre de otro lugar -->
+            {% for tipologia in registros_tipologias %}
+                <option value="{{ tipologia[0] }}">{{ tipologia[1] }}</option>
+            {% endfor %}
         </select>
 
         <input type="submit" value="Crear Caso">
