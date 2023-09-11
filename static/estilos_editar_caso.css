@@ -1,4 +1,4 @@
-﻿/* estilos_crear_caso.css */
+﻿/* estilos_crear_persona.css */
 
 body {
     font-family: Arial, sans-serif;
@@ -15,35 +15,43 @@ body {
     overflow: hidden;
 }
 
-
 form {
-    max-width: 600px;
-    margin: 0; /* Cambio para alinear a la izquierda */
-    background-color: rgba(255, 255, 255, 0.836);
+    margin: 0 auto;
+    background-color: #fff;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    text-align: left;
 }
 
 label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
-    text-align: left;
 }
 
 input[type="text"],
 input[type="number"],
 input[type="tel"],
+input[type="email"],
 textarea,
 select,
-input[type="date"] {
+input[type="date"],
+input[type="time"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    text-align: left;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
 }
 
 input[type="submit"] {
@@ -68,4 +76,65 @@ input[type="submit"]:hover {
 #form_linea_145,
 #dominio_auto_designado {
     display: none;
+}
+
+/* Personalización adicional para los campos */
+.form-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 3;
+    min-width: calc(33.33% - 20px);
+}
+
+.form-group.label-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    min-width: calc(50% - 20px);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.form-group.select-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group select,
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.address-info-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.address-info-container input[type="text"],
+.address-info-container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
 }

@@ -26,7 +26,6 @@ form {
 
 label {
     display: block;
-    margin-bottom: 10px;
     font-weight: bold;
     text-align: left;
 }
@@ -78,3 +77,161 @@ input[type="submit"]:hover {
 #dominio_auto_designado {
     display: none;
 }
+/* Para ocultar la opción "Seleccione personal policial" */
+#personal_policial option[value=""] {
+    display: none;
+}
+
+/* Para ocultar el botón "None selected" */
+button.multiselect.dropdown-toggle.btn.btn-default span.multiselect-selected-text {
+    display: none;
+}
+/* Ocultar el botón "None selected" del plugin Bootstrap Multiselect */
+button.multiselect.dropdown-toggle.btn.btn-default:after {
+    display: none !important;
+}
+.elemento-estilizado-multiple {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+}
+.input-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.elemento-estilizado-multiple {
+    width: calc(100% - 22px); /* Ajusta el ancho según tus necesidades */
+}
+
+/* Estilo para ocultar la viñeta del campo de selección múltiple */
+.multiselect-container>li>a>label.checkbox:before {
+    content: none !important;
+}
+#personal_policial + div ul {
+    list-style-type: none;
+}
+#abogado + div ul {
+    list-style-type: none;
+}
+#profesional + div ul {
+    list-style-type: none;
+}
+.policia-select {
+    width: 100%;
+    min-height: 100px; /* Ajusta la altura mínima según tus necesidades */
+}
+
+.policia-column-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.policia-column {
+    flex: 0 0 48%; /* Ajusta el ancho de las columnas según tus necesidades */
+}
+.abogado-select {
+    width: calc(100% - 22px); /* Ajusta el ancho según tus necesidades */
+    min-height: 100px; /* Establece una altura mínima para asegurar que el contenedor tenga espacio suficiente */
+}
+
+.abogado-column-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.abogado-column {
+    flex: 0 0 48%; /* Ajusta el ancho de las columnas según tus necesidades */
+}
+
+/* Estilo para ocultar la viñeta del campo de selección múltiple */
+.abogado-select option {
+    background-image: none;
+}
+
+.input-container {
+    position: relative;
+    overflow: hidden;
+    max-height: 150px; /* Ajusta la altura máxima según tus necesidades */
+}
+
+.abogado-select {
+    height: auto !important;
+    max-height: inherit !important;
+    overflow-y: auto !important;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.input-container {
+    position: relative;
+    overflow: hidden;
+    max-height: 150px; /* Ajusta la altura máxima según tus necesidades */
+}
+
+.policia-select {
+    height: auto !important;
+    max-height: inherit !important;
+    overflow-y: auto !important;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+}
+
+
+
+.policia-select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.abogado-select-container {
+    max-height: 150px; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.abogado-select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.abogado-select-container {
+    max-height: 150px; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px; /* Añadí un poco de espacio para que se vea mejor */
+}
+
+
+
+/* Estilos para contenedores de selección múltiple */
+.select-container {
+    max-height: 150px; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 15px; /* Agregué un poco de espacio entre los contenedores */
+}
+

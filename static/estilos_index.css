@@ -2,16 +2,16 @@
 
 body {
     font-family: Arial, sans-serif;
-    margin: 0; /* Elimina el margen predeterminado del cuerpo */
-    background-color: transparent; /* Fondo transparente */
-    padding: 0; /* Elimina el padding predeterminado del cuerpo */
+    margin: 0;
+    background-color: transparent;
+    padding: 0;
 }
 
 header {
     text-align: center;
     margin-bottom: 50px;
-    background-color: transparent; /* Fondo transparente */
-    padding: 0; /* Elimina el padding */
+    background-color: transparent;
+    padding: 0;
 }
 
 nav ul {
@@ -24,15 +24,23 @@ nav ul {
 
 nav li {
     margin: 0 10px;
+    text-align: center;
 }
 
 nav a {
-    display: block;
+    display: flex; /* Cambio importante para el diseño */
+    flex-direction: column; /* Cambio en la dirección de flex */
+    align-items: center; /* Centrar los ítems horizontalmente */
     padding: 10px 20px;
-    background-color: transparent; /* Fondo transparente */
-    color: #ffffff00; /* Cambia el color del texto */
+    background-color: transparent;
+    color: #000000;
     text-decoration: none;
     border-radius: 50px;
+}
+
+nav a img {
+    width: 150px; /* Ajustar el tamaño de los iconos */
+    height: 150px;
 }
 
 nav a:hover {
